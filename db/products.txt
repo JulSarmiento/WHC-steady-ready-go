@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "name": "Collar Elegant Esmeral 10mm",
+    "price": 152000,
+    "description": "Collar elaborado con finos alambres de acero inoxidable, pedreria fina natural y murano de alta calidad de 6mm, 8mm y 10mm",
+    "cuantity": 15
+  },
+  {
+    "id": 2,
+    "name": "Collar Elegant Diamond 8mm",
+    "price": 152000,
+    "description": "Collar elaborado con finos alambres de acero inoxidable, pedreria fina natural y murano de alta calidad de 4mm, 6mm y 8mm",
+    "cuantity": 10
+  }
+]
