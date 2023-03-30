@@ -12,5 +12,12 @@
     "price": 152000,
     "description": "Collar elaborado con finos alambres de acero inoxidable, pedreria fina natural y murano de alta calidad de 4mm, 6mm y 8mm",
     "cuantity": 10
+  },
+  {
+    "id": 3,
+    "name": "Collar Elegant Ruby 8mm",
+    "price": 152000,
+    "description": "Collar elaborado con finos alambres de acero inoxidable, pedreria fina natural Jaspes Rojos de alta calidad de 4mm, 6mm y 8mm",
+    "cuantity": 5
   }
 ]
