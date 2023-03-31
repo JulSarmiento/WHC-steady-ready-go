@@ -1,0 +1,137 @@
+{
+	"info": {
+		"_postman_id": "f9c549a4-c4e6-4110-a892-542949aa672b",
+		"name": "Proyecto 1 WHC",
+		"description": "# Introduction\nThe Products API is a RESTful API that allows clients to interact with a database of product information. It provides endpoints for retrieving a list of all products, retrieving a specific product by ID, creating a new product, updating an existing product, and deleting a product. The API uses the File System (fs) as its data persistence mechanism. Clients can send requests to the API using HTTP methods such as GET, POST, PUT, and DELETE. The API responds with JSON data.\n\n# Overview\nThe API uses the File System (fs) as its data persistence mechanism and provides the following endpoints:\n    GET /products: Retrieves a list of all products.\n    GET /products/:id: Retrieves a specific product by ID.\n    POST /products: Creates a new product.\n    PUT /products/:id: Updates an existing product.\n    DELETE /products/:id: Deletes a product.\n\n# Authentication\nNot Applicable\n\n# Error Codes\n    400 Bad Request: This error code indicates that the client sent a malformed or invalid request to the API. For example, if the client sends a POST request to the /products endpoint without including a name parameter in the request body, the API might respond with a 400 Bad Request error.\n\n    404 Not Found: This error code indicates that the requested resource (in this case, a product) could not be found. For example, if the client sends a GET request to the /products/123 endpoint, but there is no product in the database with an ID of 123, the API might respond with a 404 Not Found error.\n\n    500 Internal Server Error: This error code indicates that an unexpected error occurred on the server while processing the request. For example, if the API encounters a problem while reading from or writing to the file system, it might respond with a 500 Internal Server Error error.\n\n# Rate limit\nNot Applicable",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12454930"
+	},
+	"item": [
+		{
+			"name": "Get all products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get product by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/products/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"products",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n    \"name\": \"Collar Elegant Blue Pardise 10mm\",\r\n    \"price\": 152000,\r\n    \"category\" : \"Murano fino\",\r\n    \"description\": \"Collar elaborado con finos alambres de acero inoxidable, pedreria en murano fino de alta calidad de 6mm, 8mm y 10mm\",\r\n    \"cuantity\": 8\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update an existing product",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n    \"name\": \"Collar Special Edition Elegant Fire 80mm\",\r\n    \"price\": 152000,\r\n    \"description\": \"Collar elaborado con finos alambres de acero inoxidable, pedreria fina natural y murano de alta calidad de 4mm, 6mm y 8mm\",\r\n    \"cuantity\": 10\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/products/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"products",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deleting one product by ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/products/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"products",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
