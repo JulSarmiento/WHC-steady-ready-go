@@ -36,11 +36,12 @@ exports.getByid = async (req, res) => {
 // Create a new product
 exports.createProduct = async (req, res) => {
   const products = await readFIle(dbName);
-  const {name, price, description, cuantity} = req.body;
+  const {name, price, category, description, cuantity} = req.body;
   const newProduct = {
     id: products.length + 1,
     name,
     price,
+    category,
     description,
     cuantity
   };
@@ -99,6 +100,6 @@ exports.deleteProduct = async (req, res) => {
 
   res.status(httpStatus.OK).json({
     success: true,
-    data: newProducts
+    message: `Product: ${product.name}, deleted successfully`
   });
 }
