@@ -4,14 +4,17 @@ const httpStatus = require('http-status');
 // name and route of the file
 const dbName = `db/${process.env.DATABASE}.txt`;
 
+// FileSystem utils functions (read and save)
 const readFIle = require('../src/utils/readFile');
 const saveFile = require('../src/utils/saveFile');
 
+// Get all products
 exports.getAll = async (_req, res) => {
   const products = await readFIle(dbName);
   res.status(httpStatus.OK).json(products);
 };
 
+// Get a product by id
 exports.getByid = async (req, res) => {
   const products = await readFIle(dbName);
   const {id} = req.params;
@@ -30,6 +33,7 @@ exports.getByid = async (req, res) => {
   });
 };
 
+// Create a new product
 exports.createProduct = async (req, res) => {
   const products = await readFIle(dbName);
   const {name, price, description, cuantity} = req.body;
@@ -50,3 +54,51 @@ exports.createProduct = async (req, res) => {
   });
 };
 
+// Update a product by id
+exports.updateProduct = async (req, res) => {
+  const products = await readFIle(dbName);
+  const {id} = req.params;
+  const product = products.find((product) => product.id === Number(id));
+
+  if (!product) {
+    return res.status(httpStatus.NOT_FOUND).json({
+      success: false,
+      message: 'Product not found'
+    });
+  }
+
+  const {name, price, description, cuantity} = req.body;
+  product.name = name;
+  product.price = price;
+  product.description = description;
+  product.cuantity = cuantity;
+
+  await saveFile(dbName, products);
+
+  res.status(httpStatus.OK).json({
+    success: true,
+    data: product
+  });
+}
+
+// Delete a product by id
+exports.deleteProduct = async (req, res) => {
+  const products = await readFIle(dbName);
+  const {id} = req.params;
+  const product = products.find((product) => product.id === Number(id));
+
+  if (!product) {
+    return res.status(httpStatus.NOT_FOUND).json({
+      success: false,
+      message: 'Product not found'
+    });
+  }
+
+  const newProducts = products.filter((product) => product.id !== Number(id));
+  await saveFile(dbName, newProducts);
+
+  res.status(httpStatus.OK).json({
+    success: true,
+    data: newProducts
+  });
+}
