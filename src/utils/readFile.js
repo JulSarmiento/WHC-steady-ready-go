@@ -6,13 +6,8 @@ const fs = require("fs");
  * @returns array with parsed data
  */
 async function readFiles (filename) {
-    try {
-        const data = await fs.promises.readFile(filename, "utf-8");
-        return !data ? [] : JSON.parse(data);
-    }
-    catch (err) {
-        console.log(err);
-    }
+    const data = await fs.promises.readFile(filename, "utf-8");
+    return !data ? [] : JSON.parse(data);
 }
 
 module.exports = readFiles;

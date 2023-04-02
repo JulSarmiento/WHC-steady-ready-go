@@ -7,30 +7,45 @@ const dbName = `db/${process.env.DATABASE}.txt`;
 // FileSystem utils functions (read and save)
 const readFIle = require('../src/utils/readFile');
 const saveFile = require('../src/utils/saveFile');
+  
 
 // Get all products
-exports.getAll = async (_req, res) => {
-  const products = await readFIle(dbName);
-  res.status(httpStatus.OK).json(products);
+exports.getAll = async (_req, res, next) => {
+  try {
+    const products = await readFIle(dbName);
+    res.status(httpStatus.OK).json(products);
+
+  } catch (error) {
+    next(error)
+  }
 };
 
 // Get a product by id
-exports.getByid = async (req, res) => {
-  const products = await readFIle(dbName);
-  const {id} = req.params;
-  const product = products.find((product) => product.id === Number(id));
+exports.getByid = async (req, res, next) => {
+  
+  try {
+    const products = await readFIle(dbName);
+    const {id} = req.params;
+    const product = products.find((product) => product.id === Number(id));
+    
 
-  if (!product) {
-    return res.status(httpStatus.NOT_FOUND).json({
-      success: false,
-      message: 'Product not found'
+    if (!product) {
+      return res.status(httpStatus.BAD_REQUEST).json({
+        success: false,
+        message: 'Product not found'
+      });
+    }
+
+    res.status(httpStatus.OK).json({
+      success: true,
+      data: product
     });
+  
+  } catch (error){
+    next(error)
   }
 
-  res.status(httpStatus.OK).json({
-    success: true,
-    data: product
-  });
+  
 };
 
 // Create a new product
@@ -102,4 +117,4 @@ exports.deleteProduct = async (req, res) => {
     success: true,
     message: `Product: ${product.name}, deleted successfully`
   });
-}
+};
