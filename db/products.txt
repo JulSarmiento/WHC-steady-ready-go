@@ -38,5 +38,20 @@
     "category": "Murano fino",
     "description": "Collar elaborado con finos alambres de acero inoxidable, pedreria en murano fino de alta calidad de 6mm, 8mm y 10mm",
     "cuantity": 8
+  },
+  {
+    "id": 6,
+    "name": "Collar Elegant Gold 10mm",
+    "price": 152000,
+    "category": "Murano fino",
+    "description": "Collar elaborado con finos alambres de acero inoxidable, pedreria en murano fino de alta calidad de 6mm, 8mm y 10mm",
+    "cuantity": 19
+  },
+  {
+    "id": 7,
+    "name": "Collar Elegant Gold 10mm",
+    "price": 152000,
+    "category": "Murano fino",
+    "description": "Collar elaborado con finos alambres de acero inoxidable, pedreria en murano fino de alta calidad de 6mm, 8mm y 10mm"
   }
 ]

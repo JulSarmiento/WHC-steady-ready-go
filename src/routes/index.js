@@ -3,7 +3,7 @@ const httpStatus = require('http-status');
 
 const router = express.Router();
 
-const procuctsRouter = require('./products.route');
+const productsRouter = require('./products.route');
 
 router.get('/health', (_req, res) => {
   res.status(httpStatus.OK).json({
@@ -12,6 +12,6 @@ router.get('/health', (_req, res) => {
     message: `Server working fine in enviroment: ${process.env.ENVIROMENT}` || "Not set"
   })
 })
-  .use('/api/v1/products', procuctsRouter)
+  .use('/api/v1/products', productsRouter)
 
 module.exports = router;
