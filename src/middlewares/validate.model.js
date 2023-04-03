@@ -1,5 +1,6 @@
 const httpStatus = require('http-status');
 
+// Revisar este codigo para hacerlo bonito con un try/catch para el error
 const validateModel = (schema) => (req, res, next) => {
 
   const { error } = schema.validate(req.body);

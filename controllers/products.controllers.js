@@ -1,4 +1,4 @@
-const fs = require('fs');
+// const fs = require('fs');
 const httpStatus = require('http-status');
 
 // name and route of the file
