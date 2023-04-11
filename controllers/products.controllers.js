@@ -108,6 +108,33 @@ exports.updateProduct = async (req, res) => {
   }
 }
 
+exports.updateProductPatch = async (req, res, next) => {
+  try {
+    const products = await readFIle(dbName);
+    const {id} = req.params;
+    let product = products.find((product) => product.id === Number(id));
+
+    if (!product) {
+      return res.status(httpStatus.NOT_FOUND).json({
+        success: false,
+        message: 'Product not found'
+      });
+    }
+
+    const updateProduct = { ...product, ...req.body};
+    product = updateProduct;
+    await saveFile(dbName, products);
+
+    res.status(httpStatus.OK).json({
+      success: true,
+      data: product
+    });
+    
+  } catch (error){
+    next(error);
+  }
+}
+
 // Delete a product by id
 exports.deleteProduct = async (req, res) => {
   try {
