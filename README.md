@@ -7,8 +7,8 @@ Este proyecto es una API REST que permite realizar operaciones CRUD (Crear, Leer
 ## Tecnologías empleadas
 En este proyecto se han utilizado las siguientes tecnologías:
 
-  - Node.js: versión 14.16.0
-  - Express: versión 4.17.1
+  - Node.js: versión 18.13.0
+  - Express: versión 4.18.2
 
 ## Rutas de la API
 La API cuenta con las siguientes rutas:
