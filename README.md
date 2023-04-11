@@ -1,6 +1,10 @@
 # APIRestFull Mazuzoe Store
 Este es el README para el proyecto de la API REST con Express y FS como persistencia de información.
 
+## Link a GLitch
+
+   - https://glitch.com/edit/#!/steady-ready-go?path=package.json%3A10%3A4
+
 ## Descripción
 Este proyecto es una API REST que permite realizar operaciones CRUD (Crear, Leer, Actualizar y Eliminar) sobre una base de datos simulada utilizando FS como persistencia de información. La API se ha creado utilizando Node.js y el framework Express.
 
