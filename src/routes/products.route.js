@@ -11,10 +11,10 @@ router.get("/:id", productsController.getByid);
 
 router.post("/", validate(createProductSchema), productsController.createProduct);
 
-// router.patch("/:id", validate(createProductSchema), productsController.updateProduct);
+router.patch("/:id", validate(updateProductSchema), productsController.updateProductPatch);
 
 router.delete("/:id", productsController.deleteProduct);
 
-router.patch("/:id", validate(updateProductSchema), productsController.updateProductPatch);
+
 
 module.exports = router;
