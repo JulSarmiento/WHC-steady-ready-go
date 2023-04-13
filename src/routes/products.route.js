@@ -1,7 +1,8 @@
 const express = require("express");
 const productsController = require("../../controllers/products.controllers");
 const validate = require("../middlewares/validate.model");
-const {createProductSchema, updateProductSchema} = require("../utils/schema");
+const {createProductSchema, updateProductSchema} = require("../../models/joi.schema");
+
 
 const router = express.Router();
 
@@ -16,3 +17,4 @@ router.patch("/:id", validate(updateProductSchema), productsController.updatePro
 router.delete("/:id", productsController.deleteProduct);
 
 module.exports = router;
+
