@@ -13,12 +13,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/v1/products",
-					"protocol": "http",
+					"raw": "{{host}}/api/v1/products",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
-					"port": "8080",
 					"path": [
 						"api",
 						"v1",
@@ -34,17 +32,15 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/v1/products/1",
-					"protocol": "http",
+					"raw": "{{host}}/api/v1/products/10",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
-					"port": "8080",
 					"path": [
 						"api",
 						"v1",
 						"products",
-						"1"
+						"10"
 					]
 				}
 			},
@@ -57,7 +53,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": " {\r\n    \"name\": \"Collar Elegant Blue Pardise 10mm\",\r\n    \"price\": 152000,\r\n    \"category\" : \"Murano fino\",\r\n    \"description\": \"Collar elaborado con finos alambres de acero inoxidable, pedreria en murano fino de alta calidad de 6mm, 8mm y 10mm\",\r\n    \"cuantity\": 8\r\n}",
+					"raw": " {\r\n    \"name\": \"Collar Elegant Blue Sky 10mm\",\r\n    \"price\": 152000,\r\n    \"category\" : \"Murano fino\",\r\n    \"description\": \"Collar elaborado con finos alambres de acero inoxidable, pedreria en murano fino de alta calidad de 6mm, 8mm y 10mm\",\r\n    \"cuantity\": 19\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -65,12 +61,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/v1/products",
-					"protocol": "http",
+					"raw": "{{host}}/api/v1/products",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
-					"port": "8080",
 					"path": [
 						"api",
 						"v1",
@@ -95,12 +89,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/v1/products/5",
-					"protocol": "http",
+					"raw": "{{host}}/api/v1/products/5",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
-					"port": "8080",
 					"path": [
 						"api",
 						"v1",
@@ -117,21 +109,46 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/v1/products/1",
-					"protocol": "http",
+					"raw": "{{host}}/api/v1/products/6",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
-					"port": "8080",
 					"path": [
 						"api",
 						"v1",
 						"products",
-						"1"
+						"6"
 					]
 				}
 			},
 			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "http://localhost:8080",
+			"type": "string"
 		}
 	]
 }

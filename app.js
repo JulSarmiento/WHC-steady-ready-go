@@ -6,7 +6,7 @@ const errorHandlers = require('./src/middlewares/error.handlres');
 
 const app = express();
 
-app.use(log('dev'));
+app.use(log(process.env.ENVIROMENT));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
