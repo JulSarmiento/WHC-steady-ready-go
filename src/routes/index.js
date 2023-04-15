@@ -9,7 +9,7 @@ router.get('/health', (_req, res) => {
   res.status(httpStatus.OK).json({
     healht: "up",
     success: true,
-    message: `Server working fine in enviroment: ${process.env.ENVIROMENT}` || "Not set"
+    message: `Server working fine in enviroment: ${process.env.ENVIRONMENT}` || "Not set"
   })
 })
   .use('/api/v1/products', productsRouter)
