@@ -1,51 +1,49 @@
 # APIRestFull Mazuzoe Store
-Este es el README para el proyecto de la API REST con Express y FS como persistencia de información.
 
-## Link a GLitch
+This is the README for the API REST project with Express and FS as information persistence.
 
-   - https://glitch.com/edit/#!/steady-ready-go?path=package.json%3A10%3A4
+## Description
 
-## Descripción
-Este proyecto es una API REST que permite realizar operaciones CRUD (Crear, Leer, Actualizar y Eliminar) sobre una base de datos simulada utilizando FS como persistencia de información. La API se ha creado utilizando Node.js y el framework Express.
+This project is a REST API that allows CRUD (Create, Read, Update, and Delete) operations on a simulated database using FS as information persistence. The API has been created using Node.js and the Express framework.
+Technologies used
 
-## Tecnologías empleadas
-En este proyecto se han utilizado las siguientes tecnologías:
+The following technologies have been used in this project:
 
-  - Node.js: versión 18.13.0
-  - Express: versión 4.18.2
+  - Node.js: version 18.13.0
+  - Express: version 4.18.2
 
-## Rutas de la API
-La API cuenta con las siguientes rutas:
+## API routes
 
-  - GET /elementos
-    Esta ruta devuelve un array con todos los elementos de la base de datos.
+The API has the following routes:
 
-  - GET /elementos/:id
-    Esta ruta devuelve el elemento correspondiente al ID proporcionado en la URL.
+  - GET /elements
+    This route returns an array with all elements in the database.
 
-  - POST /elementos
-    Esta ruta crea un nuevo elemento en la base de datos. El elemento debe ser proporcionado en el cuerpo de la petición.
+  - GET /elements/:id
+    This route returns the element corresponding to the ID provided in the URL.
 
-  - PATCH /elementos/:id
-    Esta ruta actualiza el elemento correspondiente al ID proporcionado en la URL. Los cambios deben ser proporcionados en el cuerpo de la petición.
+  - POST /elements
+    This route creates a new element in the database. The element must be provided in the body of the request.
 
-  - DELETE /elementos/:id
-    Esta ruta elimina el elemento correspondiente al ID proporcionado en la URL.
+  - PATCH /elements/:id
+    This route updates the element corresponding to the ID provided in the URL. The changes must be provided in the body of the request.
 
-## Librerías utilizadas
-En este proyecto se han utilizado las siguientes librerías:
+  - DELETE /elements/:id
+    This route deletes the element corresponding to the ID provided in the URL.
 
-- dotenv: para cargar variables de entorno desde un archivo .env.
-- body-parser: para analizar el cuerpo de las solicitudes HTTP.
-- joi: para validar los datos de entrada.
-- http-status: para usar códigos de estado HTTP de manera fácil.
-- morgan: para la gestión de logs.
+## Libraries used
 
-## Instalación y uso
-  1. Clona el repositorio.
-  2. Instala las dependencias con el comando npm install.
-  3. Crea un archivo .env en la raíz del proyecto y establece las variables de entorno necesarias (por ejemplo, el puerto en el que se ejecutará la API).
-  4. Ejecuta la API con el comando npm start.
+The following libraries have been used in this project:
 
-## Licencia
-Este proyecto está bajo la Licencia MIT.
+  - dotenv: to load environment variables from a .env file.
+  - body-parser: to parse the body of HTTP requests.
+  - joi: to validate input data.
+  - http-status: to use HTTP status codes easily.
+  - morgan: for log management.
+
+## Installation and usage
+
+  1. Clone the repository.
+  2. Install dependencies with the command npm install.
+  3. Create a .env file in the root of the project and set the necessary environment variables (for example, the port on which the API will run).
+  4. Run the API with the command npm start.
