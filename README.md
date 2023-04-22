@@ -4,7 +4,7 @@ This is the README for the API REST project with Express and FS as information p
 
 ## Description
 
-This project is a REST API that allows CRUD (Create, Read, Update, and Delete) operations on a simulated database using FS as information persistence. The API has been created using Node.js and the Express framework.
+This project is a REST API that allows CRUD (Create, Read, Update, and Delete) operations on a simulated database using MongoDB as information persistence. The API has been created using Node.js and the Express framework.
 Technologies used
 
 The following technologies have been used in this project:
