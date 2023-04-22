@@ -5,6 +5,8 @@ const router = express.Router();
 
 const productsRouter = require('./products.route');
 
+const BASE_URL = '/api/v1/products';
+
 router.get('/health', (_req, res) => {
   res.status(httpStatus.OK).json({
     healht: "up",
@@ -12,6 +14,6 @@ router.get('/health', (_req, res) => {
     message: `Server working fine in enviroment: ${process.env.ENVIRONMENT}` || "Not set"
   })
 })
-  .use('/api/v1/products', productsRouter)
+  .use(BASE_URL, productsRouter)
 
 module.exports = router;
