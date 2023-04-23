@@ -60,7 +60,7 @@ exports.createProduct = async (req, res, next) => {
   }
 };
 
-// // Update a product by id
+// // Update partial a product by id
 exports.updateProduct = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -84,26 +84,28 @@ exports.updateProduct = async (req, res, next) => {
   }
 };
 
-// exports.updateProduct = async (req, res, next) => {
-//   try {
-//     const { id } = req.params;
-//     let product = Product.findOneAndUpdate({id}, req.body, {new: true})
+// Update a product by id
 
-//     if (!product) {
-//       return res.status(httpStatus.NOT_FOUND).json({
-//         success: false,
-//         message: "Product not found",
-//       });
-//     }
+exports.updateFullProduct = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    let product = Product.findOneAndUpdate({id}, req.body, {new: true})
 
-//     res.status(httpStatus.OK).json({
-//       success: true,
-//       data: product,
-//     });
-//   } catch (error) {
-//     next(error);
-//   }
-// };
+    if (!product) {
+      return res.status(httpStatus.NOT_FOUND).json({
+        success: false,
+        message: "Product not found",
+      });
+    }
+
+    res.status(httpStatus.OK).json({
+      success: true,
+      data: product,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 
 // // Delete a product by id
 exports.deleteProduct = async (req, res) => {
