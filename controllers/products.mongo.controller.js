@@ -61,11 +61,33 @@ exports.createProduct = async (req, res, next) => {
 };
 
 // // Update a product by id
+exports.updateProduct = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    let product = await Product.findById(id);
+
+    if (!product) {
+      return res.status(httpStatus.NOT_FOUND).json({
+        success: false,
+        message: "Product not found",
+      });
+    }
+
+    await Product.updateOne({ _id: id }, req.body);
+    
+    res.status(httpStatus.OK).json({
+      success: true,
+      data: await Product.findById(id),
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 // exports.updateProduct = async (req, res, next) => {
 //   try {
-//     const products = await readFIle(dbName);
 //     const { id } = req.params;
-//     let product = products.find((product) => product.id === Number(id));
+//     let product = Product.findOneAndUpdate({id}, req.body, {new: true})
 
 //     if (!product) {
 //       return res.status(httpStatus.NOT_FOUND).json({
@@ -73,10 +95,6 @@ exports.createProduct = async (req, res, next) => {
 //         message: "Product not found",
 //       });
 //     }
-
-//     const updatedProduct = { ...product, ...req.body };
-//     product = updatedProduct;
-//     await saveFile(dbName, products);
 
 //     res.status(httpStatus.OK).json({
 //       success: true,
@@ -91,7 +109,7 @@ exports.createProduct = async (req, res, next) => {
 exports.deleteProduct = async (req, res) => {
   try {
     const { id } = req.params;
-    const product = Product.find(id);
+    const product = await Product.find(id);
 
     if (!product) {
       return res.status(httpStatus.NOT_FOUND).json({
@@ -100,7 +118,7 @@ exports.deleteProduct = async (req, res) => {
       });
     }
 
-    await Product.deleteMany({ _id: id });
+    await Product.deleteOne({ _id: id });
 
     res.status(httpStatus.OK).json({
       success: true,
@@ -112,24 +130,5 @@ exports.deleteProduct = async (req, res) => {
   }
 };
 
-// exports.deleteProduct = async (req, res) => {
-//   try {
-//     const { id } = req.params;
-//     const product = Product.findByIdAndDelete(id);
 
-//     if (!product) {
-//       return res.status(httpStatus.NOT_FOUND).json({
-//         success: false,
-//         message: "Product not found",
-//       });
-//     }
 
-//     res.status(httpStatus.OK).json({
-//       success: true,
-//       message: `Product: deleted successfully`,
-//     });
-//   } catch (error) {
-    
-//     next(error);
-//   }
-// };
