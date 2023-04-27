@@ -56,9 +56,9 @@
   ```
   ![image](https://firebasestorage.googleapis.com/v0/b/practica-firebase-11.appspot.com/o/paso-8.png?alt=media&token=d58bc826-c955-4a1e-9921-8f44c74ce5c7)
 
-9. Realizamos un CRUD: 
+## Realizamos un CRUD: 
 
-  9.1. Agregar un usuario nuevo:
+  1. Agregar un usuario nuevo:
   
     ```
     db.users.insertOne({
@@ -69,58 +69,58 @@
     ```
     ![image](https://firebasestorage.googleapis.com/v0/b/practica-firebase-11.appspot.com/o/paso-9-1.png?alt=media&token=33d96d50-6b28-4df0-87f3-f65680e49217)
 
-  9.2. Listar los usuarios:
+  2. Listar los usuarios:
   
     ```
     db.users.find()
     ```
     ![image](https://firebasestorage.googleapis.com/v0/b/practica-firebase-11.appspot.com/o/paso-9-2.png?alt=media&token=29f63744-acad-4321-a79f-125d18b36141)
 
-  9.3. Listar los usuarios menores a 30 años: 
+  3. Listar los usuarios menores a 30 años: 
   
     ```
     db.users.find({age: {$lt: 30}})
     ```
     ![image](https://firebasestorage.googleapis.com/v0/b/practica-firebase-11.appspot.com/o/paso-9-2.png?alt=media&token=29f63744-acad-4321-a79f-125d18b36141)
 
-  9.4. Listar los usuarios mayores a 30 años:
+  4. Listar los usuarios mayores a 30 años:
   
     ```
     db.users.find({age: {$gt: 30}})
     ```
     ![image](https://firebasestorage.googleapis.com/v0/b/practica-firebase-11.appspot.com/o/paso-9-4.png?alt=media&token=7abd192d-43fb-460b-9dca-9b7f2280afbf)
 
-  9.5. Modificar un usuario: 
+  5. Modificar un usuario: 
     
     ```
     db.users.updateOne({name: "Javier"}, {$set: {age: 75}})
     ```
     ![image](https://firebasestorage.googleapis.com/v0/b/practica-firebase-11.appspot.com/o/paso-9-5.png?alt=media&token=092ec959-8d16-4fb6-984c-3542ec84e610)
 
-    9.5.1. Validamos que se haya modificado el usuario:
+  6. Validamos que se haya modificado el usuario:
     
-      ```
-      db.users.find({name: "Javier"})
-      ```
-      ![image](https://firebasestorage.googleapis.com/v0/b/practica-firebase-11.appspot.com/o/paso-9-5-1.png?alt=media&token=56bd21b5-3c1e-455c-8ad9-3a9bfe58b7e7)
+    ```
+    db.users.find({name: "Javier"})
+    ```
+    ![image](https://firebasestorage.googleapis.com/v0/b/practica-firebase-11.appspot.com/o/paso-9-5-1.png?alt=media&token=56bd21b5-3c1e-455c-8ad9-3a9bfe58b7e7)
 
-  9.6. Eliminar un usuario:
+  7. Eliminar un usuario:
   
     ```
     db.users.deleteOne({name: "Javier"})
     ```
     ![image](https://firebasestorage.googleapis.com/v0/b/practica-firebase-11.appspot.com/o/paso-9-6.png?alt=media&token=169a74f5-e044-424c-92e9-930feea9e186)
 
-  9.7. Eliminar todos los usuarios:
+  8. Eliminar todos los usuarios:
   
     ```
     db.users.deleteMany({})
     ```
     ![image](https://firebasestorage.googleapis.com/v0/b/practica-firebase-11.appspot.com/o/paso-9-7.png?alt=media&token=0aa0a7a1-6618-4b2b-a57a-df3e97139391)
 
-    9.7.1. Validamos que se hayan eliminado todos los usuarios:
+  9. Validamos que se hayan eliminado todos los usuarios:
     
-      ```
-      db.users.countDocuments()
-      ```
-      ![image](https://firebasestorage.googleapis.com/v0/b/practica-firebase-11.appspot.com/o/paso-9-7-1.png?alt=media&token=c8fa5285-a57c-4ba4-86b6-30e0ff49862c)
+    ```
+    db.users.countDocuments()
+    ```
+    ![image](https://firebasestorage.googleapis.com/v0/b/practica-firebase-11.appspot.com/o/paso-9-7-1.png?alt=media&token=c8fa5285-a57c-4ba4-86b6-30e0ff49862c)
