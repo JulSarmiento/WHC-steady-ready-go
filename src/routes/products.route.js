@@ -1,7 +1,7 @@
 const express = require("express");
-const productsController = require("../../controllers/products.mongo.controller");
+const productsController = require("../controllers/products.mongo.controller");
 const validate = require("../middlewares/validate.model");
-const {createProductSchema, updateProductSchema} = require("../../models/joi.schema");
+const {createProductSchema, updateProductSchema} = require("../models/product.schema");
 
 
 const router = express.Router();
