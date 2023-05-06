@@ -1,8 +1,8 @@
 const express = require('express');
 const log = require('morgan');
 
-const indexrouter = require('./src/routes/index');
-const errorHandlers = require('./src/middlewares/error.handlres');
+const indexrouter = require('./routes');
+const { errorHandler, notFoundHandler } = require('./middlewares');
 
 const app = express();
 
@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use(indexrouter);
-
-app.use(errorHandlers);
+app.use(notFoundHandler);
+app.use(errorHandler);
 
 module.exports = app;

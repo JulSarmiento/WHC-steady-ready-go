@@ -1,6 +1,6 @@
 const express = require("express");
 const productsController = require("../controllers/products.mongo.controller");
-const validate = require("../middlewares/validate.model");
+const {validationHandler} = require("../middlewares/index");
 const {createProductSchema, updateProductSchema} = require("../models/product.schema");
 
 
@@ -10,9 +10,9 @@ router.get("/", productsController.getAll);
 
 router.get("/:id", productsController.getByid);
 
-router.post("/", validate(createProductSchema), productsController.createProduct);
+router.post("/", validationHandler(createProductSchema), productsController.createProduct);
 
-router.patch("/:id", validate(updateProductSchema), productsController.updateProduct);
+router.patch("/:id", validationHandler(updateProductSchema), productsController.updateProduct);
 
 router.delete("/:id", productsController.deleteProduct);
 
