@@ -1,6 +1,5 @@
 const httpStatus = require('http-status');
-const { User } = require('../models/index');
-console.log('Model:', User.tableName);
+const { User } = require('../models');
 
 // /v1/users?offset=0&limit=10
 exports.getAll = async (req, res, next) => {
