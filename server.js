@@ -1,5 +1,5 @@
 require('dotenv').config();
-
+const sequelize = require('./src/utils/postgresql.config');
 const mongoose = require('mongoose');
 const app = require('./src/app');
 
@@ -14,6 +14,9 @@ const start = async () => {
       useUnifiedTopology: true
     });
     console.log('Database connected to MongoDB Atlas');
+
+    await sequelize.sync();
+    console.log('Database connected to PostgreSQL');
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
     });

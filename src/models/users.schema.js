@@ -1,6 +1,6 @@
 const {Model, DataTypes} = require('sequelize');
 
-const sequelize = require('../utils/postgresql');
+const sequelize = require('../utils/postgresql.config');
 
 class User extends Model {}
 
@@ -9,13 +9,19 @@ User.init({
     type: DataTypes.UUID,
     defaultValue: DataTypes.UUIDV4,
     primaryKey: true,
-    allowNull: false,    
     unique: true
+  },
+  dni: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    unique: true,
+    validate: {
+      len: [7, 8]
+    }
   },
   name: {
     type: DataTypes.CHAR(10),
-    allowNull: false,
-    unique: true
+    allowNull: false
   },
   lastname: {
     type: DataTypes.STRING,
@@ -32,24 +38,25 @@ User.init({
   },
   password: {
     type: DataTypes.STRING,
-    allowNull: false,
-    validate: {
-      is: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/
-    }
+    allowNull: false
   },
   genre: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  birthdate: {
-    type: DataTypes.DATE,
-    allowNull: false
-  },
   phone: {
     type: DataTypes.STRING,
     allowNull: false
+  },
+  active: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+    defaultValue: true
   }
 }, {
   sequelize,
-  modelName: 'User'
+  modelName: 'User',
+  tableName: 'users',
 });
+
+module.exports = User;
