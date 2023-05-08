@@ -47,3 +47,7 @@ The following libraries have been used in this project:
   2. Install dependencies with the command npm install.
   3. Create a .env file in the root of the project and set the necessary environment variables (for example, the port on which the API will run).
   4. Run the API with the command npm start.
+
+
+
+
