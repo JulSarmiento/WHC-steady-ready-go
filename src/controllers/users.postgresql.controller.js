@@ -2,6 +2,7 @@ const httpStatus = require('http-status');
 const { User } = require('../models');
 
 // /v1/users?offset=0&limit=10
+// get all users
 exports.getAll = async (req, res, next) => {
   const {offset = 0, limit = 10} = req.query;
   try {
@@ -18,6 +19,21 @@ exports.getAll = async (req, res, next) => {
   }
 };
 
+// get user by id
+exports.getByid = async (req, res, next) => {
+  const {id} = req.params;
+  try {
+    const user = await User.findByPk(id);
+    res.status(httpStatus.OK).json({
+      success: true,
+      user
+    });
+  }catch (error) {
+    next(error);
+  }
+};
+
+// create user
 exports.createUser = async (req, res, next) => {
   const {body} = req;
   try {
@@ -30,3 +46,24 @@ exports.createUser = async (req, res, next) => {
     next(error);
   }
 }
+
+// update user
+exports.updateUser = async (req, res, next) => {
+  const {id} = req.params;
+  const {body} = req;
+  try {
+    const user = await User.update(body, {
+      where: {
+        id
+      }
+    });
+    console.log("user", user);
+    res.status(httpStatus.OK).json({
+      success: true,
+      user
+    });
+  }catch (error) {
+    next(error);
+  }
+}
+

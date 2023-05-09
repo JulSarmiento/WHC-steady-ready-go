@@ -3,7 +3,7 @@ const sequelize = require('./src/utils/postgresql.config');
 const mongoose = require('mongoose');
 const app = require('./src/app');
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 const CONNECTION_URL = `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@cluster0.94wxqpb.mongodb.net/products?retryWrites=true&w=majority`;
 
@@ -15,8 +15,10 @@ const start = async () => {
     });
     console.log('Database connected to MongoDB Atlas');
 
+    await sequelize.authenticate();
     await sequelize.sync();
     console.log('Database connected to PostgreSQL');
+
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
     });

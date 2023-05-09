@@ -1,3 +1,5 @@
+Products
+
 [
   {
     "id": 1,
@@ -39,4 +41,139 @@
     "description": "Collar elaborado con finos alambres de acero inoxidable, pedreria en murano fino de alta calidad de 6mm, 8mm y 10mm",
     "cuantity": 8
   }
+]
+
+users
+[
+   {
+      "id": "c965ea56-d195-4ba2-83e9-b43c587c7521",
+      "dni": 12345678,
+      "name": "John      ",
+      "lastname": "Doe",
+      "email": "johndoe@example.com",
+      "password": "mypassword",
+      "genre": "male",
+      "phone": "+1234567890",
+      "active": true,
+      "createdAt": "2023-05-09T19:31:33.702Z",
+      "updatedAt": "2023-05-09T19:31:33.702Z"
+  },
+  {
+      "id": "237d3730-97b5-4e50-97a7-65884d57c962",
+      "dni": 87654321,
+      "name": "Jane      ",
+      "lastname": "Smith",
+      "email": "janesmith@example.com",
+      "password": "mypassword",
+      "genre": "female",
+      "phone": "+0987654321",
+      "active": true,
+      "createdAt": "2023-05-09T19:34:29.808Z",
+      "updatedAt": "2023-05-09T19:34:29.808Z"
+  },
+  {
+      "id": "361ff1fa-4a6b-46ab-9c9a-82bb7e6d60cf",
+      "dni": 23456789,
+      "name": "Robert    ",
+      "lastname": "Johnson",
+      "email": "robertjohnson@example.com",
+      "password": "mypassword",
+      "genre": "male",
+      "phone": "+9876543210",
+      "active": true,
+      "createdAt": "2023-05-09T19:34:41.129Z",
+      "updatedAt": "2023-05-09T19:34:41.129Z"
+  },
+  {
+      "id": "ebfde7bf-774b-4131-ad52-f298bdda4bb7",
+      "dni": 98765432,
+      "name": "Sarah     ",
+      "lastname": "Williams",
+      "email": "sarahwilliams@example.com",
+      "password": "mypassword",
+      "genre": "female",
+      "phone": "+8765432109",
+      "active": true,
+      "createdAt": "2023-05-09T19:34:49.229Z",
+      "updatedAt": "2023-05-09T19:34:49.229Z"
+  },
+  {
+      "id": "63b233ca-1340-47d8-ab08-e2ee278da623",
+      "dni": 34567890,
+      "name": "Michael   ",
+      "lastname": "Brown",
+      "email": "michaelbrown@example.com",
+      "password": "mypassword",
+      "genre": "male",
+      "phone": "+7654321098",
+      "active": true,
+      "createdAt": "2023-05-09T19:34:58.959Z",
+      "updatedAt": "2023-05-09T19:34:58.959Z"
+  },
+  {
+      "id": "70c4ad4e-a547-454c-9da1-d85806c7c076",
+      "dni": 76543219,
+      "name": "Emily     ",
+      "lastname": "Davis",
+      "email": "emilydavis@example.com",
+      "password": "mypassword",
+      "genre": "female",
+      "phone": "+6543210987",
+      "active": true,
+      "createdAt": "2023-05-09T19:35:07.268Z",
+      "updatedAt": "2023-05-09T19:35:07.268Z"
+  },
+  {
+      "id": "bf37ec64-3030-45bc-95e3-2e8274f05b9d",
+      "dni": 45678901,
+      "name": "Daniel    ",
+      "lastname": "Miller",
+      "email": "danielmiller@example.com",
+      "password": "mypassword",
+      "genre": "male",
+      "phone": "+5432109876",
+      "active": true,
+      "createdAt": "2023-05-09T19:35:23.889Z",
+      "updatedAt": "2023-05-09T19:35:23.889Z"
+  },
+  {
+      "id": "0babee37-da60-4c87-bcba-7b3b6400dc24",
+      "dni": 87654320,
+      "name": "Olivia    ",
+      "lastname": "Anderson",
+      "email": "oliviaanderson@example.com",
+      "password": "mypassword",
+      "genre": "female",
+      "phone": "+4321098765",
+      "active": true,
+      "createdAt": "2023-05-09T19:35:32.099Z",
+      "updatedAt": "2023-05-09T19:35:32.099Z"
+  },
+  {
+      "id": "9edf0085-adbd-4d90-aadf-e6149cba6e62",
+      "dni": 56789012,
+      "name": "David     ",
+      "lastname": "Wilson",
+      "email": "davidwilson@example.com",
+      "password": "mypassword",
+      "genre": "male",
+      "phone": "+3210987654",
+      "active": true,
+      "createdAt": "2023-05-09T19:35:39.124Z",
+      "updatedAt": "2023-05-09T19:35:39.124Z"
+  },
+  {
+      "id": "6bd39a0f-1f99-40c6-8c54-a143d963d3a1",
+      "dni": 67890123,
+      "name": "James     ",
+      "lastname": "Thomas",
+      "email": "jamesthomas@example.com",
+      "password": "mypassword",
+      "genre": "male",
+      "phone": "+1098765432",
+      "active": true,
+      "createdAt": "2023-05-09T19:37:07.318Z",
+      "updatedAt": "2023-05-09T19:37:07.318Z"
+  }
+
 ]

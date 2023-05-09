@@ -16,7 +16,7 @@ User.init({
     allowNull: false,
     unique: true,
     validate: {
-      len: [7, 8]
+      len: [7, 8],
     }
   },
   name: {
@@ -33,12 +33,15 @@ User.init({
     unique: true,
     validate: {
       isEmail: true,
-      isLowercase: true
+      isLowercase: true,
     }
   },
   password: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      len: [10, 16],
+    }
   },
   genre: {
     type: DataTypes.STRING,
@@ -46,7 +49,10 @@ User.init({
   },
   phone: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      len: [9, 11],
+    }
   },
   active: {
     type: DataTypes.BOOLEAN,
