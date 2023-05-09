@@ -12,7 +12,7 @@ exports.getAll = async (req, res, next) => {
     });
     res.status(httpStatus.OK).json({
       success: true,
-      users
+      data: users
     });
   }catch (error) {
     next(error);
@@ -26,7 +26,7 @@ exports.getByid = async (req, res, next) => {
     const user = await User.findByPk(id);
     res.status(httpStatus.OK).json({
       success: true,
-      user
+      data: user
     });
   }catch (error) {
     next(error);
@@ -40,7 +40,7 @@ exports.createUser = async (req, res, next) => {
     const user = await User.create(body);
     res.status(httpStatus.CREATED).json({
       success: true,
-      user
+      data: user
     });
   }catch (error) {
     next(error);
@@ -52,16 +52,17 @@ exports.updateUser = async (req, res, next) => {
   const {id} = req.params;
   const {body} = req;
   try {
-    const user = await User.update(body, {
+      await User.update(body, {
       where: {
         id
       }
     });
-    console.log("user", user);
+    const updateUser = await User.findByPk(id);
     res.status(httpStatus.OK).json({
       success: true,
-      user
+      data: updateUser
     });
+    
   }catch (error) {
     next(error);
   }

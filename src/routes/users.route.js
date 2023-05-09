@@ -1,7 +1,7 @@
 const express = require("express");
 const usersController = require("../controllers/users.postgresql.controller");
-const { validationHandler } = require("../middlewares/index");
-const { createUserSchema, updateUserSchema } = require("../models/users.schema");
+const { validationHandlerUserCreate, validationHandlerUserUpdate } = require("../middlewares");
+
 
 const router = express.Router();
 
@@ -9,9 +9,9 @@ router.get("/", usersController.getAll);
 
 router.get("/:id", usersController.getByid);
 
-router.post("/", [validationHandler(createUserSchema)] ,usersController.createUser);
+router.post("/", [validationHandlerUserCreate] ,usersController.createUser);
 
-router.patch("/:id", [validationHandler(updateUserSchema)], usersController.updateUser);
+router.patch("/:id", [validationHandlerUserUpdate], usersController.updateUser);
 
 // router.delete("/:id", usersController.deleteProduct);
 

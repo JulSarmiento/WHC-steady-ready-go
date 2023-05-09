@@ -1,7 +1,6 @@
 const httpStatus = require("http-status");
 
 const validateModel = (schema) => (req, res, next) => {
-  console.log("q.body", req.body);
   console.log("schema", schema);
   const { error } = schema.validate(req.body);
 
