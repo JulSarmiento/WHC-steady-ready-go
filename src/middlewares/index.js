@@ -5,7 +5,7 @@ exports.errorHandler = require('./error.handlres');
 exports.notFoundHandler = require('./not.found.handlres');
 
 // "Validation handler with joi"
-const validationHandler = require('./validate.model');
+const validationHandler = require('./validate.handler');
 
 // "Products validation handler with joi"
 exports.validationHandlerProductCreate =  validationHandler(createProductSchema);
