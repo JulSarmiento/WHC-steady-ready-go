@@ -13,7 +13,7 @@ router.post("/", [validationHandlerUserCreate] ,usersController.createUser);
 
 router.patch("/:id", [validationHandlerUserUpdate], usersController.updateUser);
 
-// router.delete("/:id", usersController.deleteProduct);
+router.delete("/:id", usersController.deleteUser);
 
 module.exports = router;
 
