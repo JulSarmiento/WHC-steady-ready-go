@@ -9,8 +9,7 @@ const validateModel = (schema) => (req, res, next) => {
       success: false,
       message: error.message,
     });
-  }
-
+  };
   next();
 };
 

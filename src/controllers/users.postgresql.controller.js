@@ -1,4 +1,6 @@
 const httpStatus = require('http-status');
+
+// Sequelize model for users table in PostgreSQL
 const { User } = require('../models');
 console.log("users", User);
 

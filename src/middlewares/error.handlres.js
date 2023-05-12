@@ -1,6 +1,5 @@
 const httpStatus = require('http-status');
 
-// Revisar ese destructuring
 const errorMiddleware = (err, _req, res, _next) => {
   const { statusCode, message } = err;
 
@@ -10,6 +9,6 @@ const errorMiddleware = (err, _req, res, _next) => {
     message,
   });
 
-}
+};
 
 module.exports = errorMiddleware;
