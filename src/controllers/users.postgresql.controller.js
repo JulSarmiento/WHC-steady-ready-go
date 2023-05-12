@@ -1,5 +1,6 @@
 const httpStatus = require('http-status');
 const { User } = require('../models');
+console.log("users", User);
 
 // /v1/users?offset=0&limit=10
 // get all users
@@ -24,6 +25,12 @@ exports.getByid = async (req, res, next) => {
   const {id} = req.params;
   try {
     const user = await User.findByPk(id);
+    if (!user) {
+      return res.status(httpStatus.BAD_REQUEST).json({
+        success: false,
+        message: 'User not found'
+      });
+    };
     res.status(httpStatus.OK).json({
       success: true,
       data: user
@@ -35,9 +42,21 @@ exports.getByid = async (req, res, next) => {
 
 // create user
 exports.createUser = async (req, res, next) => {
-  const {body} = req;
+  const {dni, name, lastname, email, password, genre, phone, active}= req.body;
+
+   const newUser = {
+    dni,
+    name,
+    lastname,
+    email,
+    password,
+    genre,
+    phone,
+    active,
+  };
+
   try {
-    const user = await User.create(body);
+    const user = await User.create(newUser);
     res.status(httpStatus.CREATED).json({
       success: true,
       data: user
@@ -50,29 +69,45 @@ exports.createUser = async (req, res, next) => {
 // update user
 exports.updateUser = async (req, res, next) => {
   const {id} = req.params;
-  const {body} = req;
+  const user = await User.findByPk(id);
+
+  if (!user) {
+    return res.status(httpStatus.BAD_REQUEST).json({
+      success: false,
+      message: 'User not found'
+    });
+  };
+    
   try {
-      await User.update(body, {
+    await User.update(req.body, {
       where: {
         id
       }
     });
-    const updateUser = await User.findByPk(id);
+
     res.status(httpStatus.OK).json({
       success: true,
-      data: updateUser
+      data: await User.findByPk(id)
     });
     
   }catch (error) {
     next(error);
-  }
-}
+  };
+};
 
 // delete user
 exports.deleteUser = async (req, res, next) => {
   const {id} = req.params;
   try {
     const userToDelete = await User.findByPk(id);
+
+    if (!userToDelete) {
+      return res.status(httpStatus.BAD_REQUEST).json({
+        success: false,
+        message: 'User not found'
+      });
+    };
+
     await User.destroy({
       where: {
         id
@@ -84,5 +119,5 @@ exports.deleteUser = async (req, res, next) => {
     });
   }catch (error) {
     next(error);
-  }
-}
+  };
+};

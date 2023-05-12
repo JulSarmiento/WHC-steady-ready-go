@@ -2,8 +2,8 @@
 const httpStatus = require("http-status");
 
 // Mongoose model for products collection in MongoDB
-const {Product} = require("../models/product.schema");
-console.log(Product)
+const { Product } = require("../models/product.schema");
+console.log("product",Product)
 
 // Get all products
 exports.getAll = async (_req, res, next) => {
@@ -15,7 +15,7 @@ exports.getAll = async (_req, res, next) => {
   }
 };
 
-// // Get a product by id
+// Get a product by id
 exports.getByid = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -33,12 +33,13 @@ exports.getByid = async (req, res, next) => {
       success: true,
       data: product,
     });
+
   } catch (error) {
     next(error);
   }
 };
 
-// // Create a new product
+// Create a new product
 exports.createProduct = async (req, res, next) => {
   try {
     const { name, price, category, description, cuantity } = req.body;
@@ -84,30 +85,7 @@ exports.updateProduct = async (req, res, next) => {
   }
 };
 
-// Update a product by id
-
-exports.updateFullProduct = async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    let product = Product.findOneAndUpdate({id}, req.body, {new: true})
-
-    if (!product) {
-      return res.status(httpStatus.NOT_FOUND).json({
-        success: false,
-        message: "Product not found",
-      });
-    }
-
-    res.status(httpStatus.OK).json({
-      success: true,
-      data: product,
-    });
-  } catch (error) {
-    next(error);
-  }
-};
-
-// // Delete a product by id
+// Delete a product by id
 exports.deleteProduct = async (req, res) => {
   try {
     const { id } = req.params;
