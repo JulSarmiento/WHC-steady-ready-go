@@ -5,6 +5,7 @@ const app = require('./src/app');
 
 const PORT = process.env.PORT || 3001;
 
+// Mongo connection string
 const CONNECTION_URL = `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@cluster0.94wxqpb.mongodb.net/products?retryWrites=true&w=majority`;
 
 const start = async () => {
