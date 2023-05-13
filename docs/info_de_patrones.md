@@ -263,7 +263,7 @@ class Observer {
   constructor(subject) {
     this.subject = subject;
     this.subject.on('data-updated', this.onDataUpdated.bind(this));
-  }
+    }
 
   onDataUpdated(data) {
     console.log(`Data actualizada: ${data}`);
