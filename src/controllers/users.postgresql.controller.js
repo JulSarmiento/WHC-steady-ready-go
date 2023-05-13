@@ -17,9 +17,11 @@ exports.getAll = async (req, res, next) => {
       success: true,
       data: users
     });
-  }catch (error) {
+
+  } catch (error) {
     next(error);
-  }
+
+  };
 };
 
 // get user by id
@@ -37,15 +39,16 @@ exports.getByid = async (req, res, next) => {
       success: true,
       data: user
     });
-  }catch (error) {
+
+  } catch (error) {
     next(error);
-  }
+
+  };
 };
 
 // create user
 exports.createUser = async (req, res, next) => {
   const {dni, name, lastname, email, password, genre, phone, active}= req.body;
-
    const newUser = {
     dni,
     name,
@@ -56,37 +59,35 @@ exports.createUser = async (req, res, next) => {
     phone,
     active,
   };
-
   try {
     const user = await UserSchema.create(newUser);
     res.status(httpStatus.CREATED).json({
       success: true,
       data: user
     });
-  }catch (error) {
+
+  } catch (error) {
     next(error);
-  }
-}
+
+  };
+};
 
 // update user
 exports.updateUser = async (req, res, next) => {
   const {id} = req.params;
   const user = await UserSchema.findByPk(id);
-
   if (!user) {
     return res.status(httpStatus.BAD_REQUEST).json({
       success: false,
       message: 'User not found'
     });
-  };
-    
+  };    
   try {
     await UserSchema.update(req.body, {
       where: {
         id
       }
     });
-
     res.status(httpStatus.OK).json({
       success: true,
       data: await UserSchema.findByPk(id)
@@ -94,6 +95,7 @@ exports.updateUser = async (req, res, next) => {
     
   }catch (error) {
     next(error);
+
   };
 };
 
@@ -102,14 +104,12 @@ exports.deleteUser = async (req, res, next) => {
   const {id} = req.params;
   try {
     const userToDelete = await UserSchema.findByPk(id);
-
     if (!userToDelete) {
       return res.status(httpStatus.BAD_REQUEST).json({
         success: false,
         message: 'User not found'
       });
     };
-
     await UserSchema.destroy({
       where: {
         id
@@ -120,6 +120,7 @@ exports.deleteUser = async (req, res, next) => {
       message: `User with id "${id}" and name "${userToDelete.name}" has been deleted`
     });
   }catch (error) {
+
     next(error);
   };
 };
