@@ -1,15 +1,15 @@
 const httpStatus = require('http-status');
 
 // Sequelize model for users table in PostgreSQL
-const { User } = require('../models');
-console.log("users", User);
+const { UserSchema } = require('../models');
+console.log("users", UserSchema);
 
 // /v1/users?offset=0&limit=10
 // get all users
 exports.getAll = async (req, res, next) => {
   const {offset = 0, limit = 10} = req.query;
   try {
-    const users = await User.findAll({
+    const users = await UserSchema.findAll({
       offset,
       limit
     });
@@ -26,7 +26,7 @@ exports.getAll = async (req, res, next) => {
 exports.getByid = async (req, res, next) => {
   const {id} = req.params;
   try {
-    const user = await User.findByPk(id);
+    const user = await UserSchema.findByPk(id);
     if (!user) {
       return res.status(httpStatus.BAD_REQUEST).json({
         success: false,
@@ -58,7 +58,7 @@ exports.createUser = async (req, res, next) => {
   };
 
   try {
-    const user = await User.create(newUser);
+    const user = await UserSchema.create(newUser);
     res.status(httpStatus.CREATED).json({
       success: true,
       data: user
@@ -71,7 +71,7 @@ exports.createUser = async (req, res, next) => {
 // update user
 exports.updateUser = async (req, res, next) => {
   const {id} = req.params;
-  const user = await User.findByPk(id);
+  const user = await UserSchema.findByPk(id);
 
   if (!user) {
     return res.status(httpStatus.BAD_REQUEST).json({
@@ -81,7 +81,7 @@ exports.updateUser = async (req, res, next) => {
   };
     
   try {
-    await User.update(req.body, {
+    await UserSchema.update(req.body, {
       where: {
         id
       }
@@ -89,7 +89,7 @@ exports.updateUser = async (req, res, next) => {
 
     res.status(httpStatus.OK).json({
       success: true,
-      data: await User.findByPk(id)
+      data: await UserSchema.findByPk(id)
     });
     
   }catch (error) {
@@ -101,7 +101,7 @@ exports.updateUser = async (req, res, next) => {
 exports.deleteUser = async (req, res, next) => {
   const {id} = req.params;
   try {
-    const userToDelete = await User.findByPk(id);
+    const userToDelete = await UserSchema.findByPk(id);
 
     if (!userToDelete) {
       return res.status(httpStatus.BAD_REQUEST).json({
@@ -110,7 +110,7 @@ exports.deleteUser = async (req, res, next) => {
       });
     };
 
-    await User.destroy({
+    await UserSchema.destroy({
       where: {
         id
       }

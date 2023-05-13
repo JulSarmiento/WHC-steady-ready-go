@@ -1,13 +1,13 @@
 const httpStatus = require("http-status");
 
 // Mongoose model for products collection in MongoDB
-const { Product } = require("../models/product.schema");
-console.log("product",Product)
+const { ProductSchemas } = require("../models");
+console.log("product schema", ProductSchemas)
 
 // Get all products
 exports.getAll = async (_req, res, next) => {
   try {
-    const products = await Product.find({})
+    const products = await ProductSchemas.find({})
     res.status(httpStatus.OK).json(products);
   } catch (error) {
     next(error);
@@ -19,7 +19,7 @@ exports.getByid = async (req, res, next) => {
   try {
     const { id } = req.params;
     console.log( "id", id)
-    const product = await Product.findById(id);
+    const product = await ProductSchemas.findById(id);
 
     if (!product) {
       return res.status(httpStatus.BAD_REQUEST).json({
@@ -50,7 +50,7 @@ exports.createProduct = async (req, res, next) => {
       cuantity,
     };
 
-    const savedItem = await Product.create(newProduct);
+    const savedItem = await ProductSchemas.create(newProduct);
     res.status(httpStatus.CREATED).json({
       success: true,
       data: savedItem,
@@ -64,7 +64,7 @@ exports.createProduct = async (req, res, next) => {
 exports.updateProduct = async (req, res, next) => {
   try {
     const { id } = req.params;
-    let product = await Product.findById(id);
+    let product = await ProductSchemas.findById(id);
 
     if (!product) {
       return res.status(httpStatus.NOT_FOUND).json({
@@ -73,11 +73,11 @@ exports.updateProduct = async (req, res, next) => {
       });
     }
 
-    await Product.updateOne({ _id: id }, req.body);
+    await ProductSchemas.updateOne({ _id: id }, req.body);
     
     res.status(httpStatus.OK).json({
       success: true,
-      data: await Product.findById(id),
+      data: await ProductSchemas.findById(id),
     });
   } catch (error) {
     next(error);
@@ -88,7 +88,7 @@ exports.updateProduct = async (req, res, next) => {
 exports.deleteProduct = async (req, res) => {
   try {
     const { id } = req.params;
-    const product = await Product.find(id);
+    const product = await ProductSchemas.find(id);
 
     if (!product) {
       return res.status(httpStatus.NOT_FOUND).json({
@@ -97,7 +97,7 @@ exports.deleteProduct = async (req, res) => {
       });
     }
 
-    await Product.deleteOne({ _id: id });
+    await ProductSchemas.deleteOne({ _id: id });
 
     res.status(httpStatus.OK).json({
       success: true,
