@@ -8,6 +8,7 @@ const productsRouter = require('./products.route');
 const usersRouter = require('./users.route');
 const authRouter = require('./auth.route');
 
+
 const BASE_URL = '/api/v1/';
 
 router.get('/health', (_req, res) => {

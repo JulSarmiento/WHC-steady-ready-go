@@ -1,5 +1,6 @@
 const httpStatus = require('http-status');
 const jwt = require('jsonwebtoken');
+const User = require('../models/users.schema');
 
 exports.signIn = async (req, res) => {
   console.log("Auth -> signIn", req.body);

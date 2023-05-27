@@ -49,7 +49,7 @@
             body[key] = value;
           });
 
-          const { email, name, token } = await fetch("/login", {
+          const { email, name, token } = await fetch("/api/v1/auth/login", {
             method: "post",
             headers: {
               "Content-Type": "application/json"
