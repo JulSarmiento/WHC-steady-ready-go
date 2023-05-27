@@ -5,8 +5,7 @@ const router = express.Router();
 
 const productsRouter = require('./products.route');
 const usersRouter = require('./users.route');
-const {login, restrictedView} = require('../controllers/auth.controller');
-const {isAuth} = require('../middlewares/isAuth.handler');
+const authRouter = require('./auth.route');
 
 const BASE_URL = '/api/v1/';
 
@@ -17,8 +16,7 @@ router.get('/health', (_req, res) => {
     message: `Server working fine in enviroment: ${process.env.ENVIRONMENT}` || "Not set"
   })
 })
-  .use(`${BASE_URL}login`, login)
-  .use(`${BASE_URL}auth/confidential`, isAuth, restrictedView)
+  .use(`${BASE_URL}auth/`, authRouter)
   .use(`${BASE_URL}products`, productsRouter)
   .use(`${BASE_URL}users`, usersRouter)
 

@@ -1,7 +1,7 @@
 require('dotenv').config();
 const sequelize = require('./src/utils/postgresql.config');
 const mongoose = require('mongoose');
-const app = require('./src/app');
+const server = require('./src/app');
 
 const PORT = process.env.PORT || 3001;
 
@@ -20,7 +20,7 @@ const start = async () => {
     await sequelize.sync();
     console.log('Database connected to PostgreSQL');
 
-    app.listen(PORT, () => {
+    server.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
     });
   } catch (err) {
