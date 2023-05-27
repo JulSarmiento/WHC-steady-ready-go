@@ -1,8 +1,33 @@
 const {Model, DataTypes} = require('sequelize');
+const {encryptPassword} = require('../utils/auth');
 
 const sequelize = require('../utils/postgresql.config');
 
-class User extends Model {}
+/**
+ * @property {string} email - User uniques email
+ * @property {string} firstName - User first name
+ * @property {string} lastName -  User last name
+ * @property {string} password - User sensitive password - only received on creation or at login
+ */
+class User extends Model {
+  /**
+   * @promise
+   *
+   * @param {string} email - User email
+   * @param {string} password - Password to validate
+   * @returns {Promise<User>} - User if exists, null otherwise
+   */
+  static login(email, password) {
+    return User.findOne({
+      where: { email, password: encryptPassword(password) },
+      
+    }, );
+  }
+  
+  getFullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
+}
 
 User.init({
   id: {
@@ -41,6 +66,9 @@ User.init({
     allowNull: false,
     validate: {
       len: [10, 16],
+      set(password) {
+        this.setDataValue('password', encryptPassword(password))
+      }
     }
   },
   genre: {

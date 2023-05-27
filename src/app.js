@@ -21,6 +21,8 @@ app.use(log(process.env.ENVIRONMENT));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+app.use(express.static('public'));
+
 app.use(indexrouter);
 app.use(notFoundHandler);
 app.use(errorHandler);
