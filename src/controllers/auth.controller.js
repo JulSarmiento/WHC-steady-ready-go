@@ -13,9 +13,12 @@ exports.signIn = async (req, res) => {
       res.json({error: "user / password combination does not exists"});
       return
     }
-    
+  
+    // token que se le envia al cliente con la informacion del usuario
     const token = JWT.sign(
-      { email: user.email },
+      { email: user.email ,
+        name: user.getFullName(),
+        id: user.id},
       process.env.JWT_SECRET_KEY,
       { expiresIn: "1d" }
     )

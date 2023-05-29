@@ -1,4 +1,5 @@
 const JWT = require("jsonwebtoken");
+const httpStatus = require("http-status");
 
 module.exports = (req, res, next) => {
   const { authorization } = req.headers;
@@ -15,11 +16,13 @@ module.exports = (req, res, next) => {
     if (!decodedToken) {
       throw "Invalid Token";
     }
+
+    req.user = decodedToken;
     
     next();
-  } catch(err) {
+
+  } catch(err) {    
     console.log(err);
-    res.status(401);
-    res.send(err.message || "Access forbidden");
-  }
+    res.status(httpStatus.FORBIDDEN).send(err.message || "Access forbidden");
+  };
 }
