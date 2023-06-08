@@ -1,8 +1,7 @@
-<<<<<<< HEAD
 const {Model, DataTypes} = require('sequelize');
-const {encryptPassword} = require('../utils/auth');
+const {encryptPassword} = require('../utils/auth.js');
 
-const sequelize = require('../utils/postgresql.config');
+const sequelize = require('../utils/postgresql.config,js');
 
 /**
  * @property {string} email - User uniques email
@@ -18,13 +17,6 @@ class User extends Model {
    * @param {string} password - Password to validate
    * @returns {Promise<User>} - User if exists, null otherwise
    */
-=======
-import { Model, DataTypes } from 'sequelize';
-import crypto from 'crypto';
-import sequelize from '../utils/postgresql.config';
-
-class User extends Model {
->>>>>>> c0f4616 (pasando de js to ss)
   static login(email, password) {
     return User.findOne({
       where: { email, password: encryptPassword(password) },
@@ -72,18 +64,12 @@ User.init({
   password: {
     type: DataTypes.STRING,
     allowNull: false,
-<<<<<<< HEAD
     validate: {
       len: [10, 16],
       set(password) {
         this.setDataValue('password', encryptPassword(password))
       }
     }
-=======
-    set(password) {
-      this.setDataValue("password", encryptPassword(password));
-    },  
->>>>>>> c0f4616 (pasando de js to ss)
   },
   genre: {
     type: DataTypes.STRING,

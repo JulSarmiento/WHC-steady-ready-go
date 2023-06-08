@@ -1,7 +1,7 @@
-require('dotenv').config();
-const sequelize = require('./src/utils/postgresql.config');
-const mongoose = require('mongoose');
-const server = require('./src/app');
+import 'dotenv/config';
+import { authenticate, sync } from './src/utils/postgresql.config.js';
+import { connect } from 'mongoose';
+import { listen } from './src/app.js';
 
 const PORT = process.env.PORT || 3001;
 
@@ -10,17 +10,17 @@ const CONNECTION_URL = `mongodb+srv://${process.env.MONGO_USERNAME}:${process.en
 
 const start = async () => {
   try {
-    await mongoose.connect(CONNECTION_URL, {
+    await connect(CONNECTION_URL, {
       useNewUrlParser: true,
       useUnifiedTopology: true
     });
     console.log('Database connected to MongoDB Atlas');
 
-    await sequelize.authenticate();
-    await sequelize.sync();
+    await authenticate();
+    await sync();
     console.log('Database connected to PostgreSQL');
 
-    server.listen(PORT, () => {
+    listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
     });
   } catch (err) {

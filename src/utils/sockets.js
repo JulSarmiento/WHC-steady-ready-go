@@ -1,7 +1,11 @@
-const io = require('socket.io')(3001, {
+import io from 'socket.io';
+import ioController from '../controllers/io.controller.js';
+
+io = io.listen(3001, {
   cors: {
     origin: '*'
   }
 });
 
-io.on('connection', require('../controllers/io.controller'));
+
+io.on('connection', ioController);

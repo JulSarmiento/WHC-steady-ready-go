@@ -1,19 +1,18 @@
-const express = require("express");
-const usersController = require("../controllers/users.postgresql.controller");
-const { validationHandlerUserCreate, validationHandlerUserUpdate } = require("../middlewares");
-
+import express from "express";
+import { getAll, getByid, createUser, updateUser, deleteUser} from "../controllers/users.postgresql.controller.js";
+import { validationHandlerUserCreate, validationHandlerUserUpdate } from "../middlewares/index.js";
 
 const router = express.Router();
 
-router.get("/", usersController.getAll);
+router.get("/", getAll);
 
-router.get("/:id", usersController.getByid);
+router.get("/:id", getByid);
 
-router.post("/", [validationHandlerUserCreate], usersController.createUser);
+router.post("/", [validationHandlerUserCreate], createUser);
 
-router.patch("/:id", [validationHandlerUserUpdate], usersController.updateUser);
+router.patch("/:id", [validationHandlerUserUpdate], updateUser);
 
-router.delete("/:id", usersController.deleteUser);
+router.delete("/:id", deleteUser);
 
-module.exports = router;
+export default router;
 

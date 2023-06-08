@@ -1,11 +1,10 @@
-const express = require('express');
-const log = require('morgan');
-const http = require('http');
-const { Server } = require('socket.io');
+import express from 'express';
+import http from 'http';
+import { Server } from 'socket.io';
 
-
-const indexrouter = require('./routes');
-const { errorHandler, notFoundHandler } = require('./middlewares');
+import indexrouter from './routes/index.js';
+import { errorHandler, notFoundHandler } from './middlewares/index.js';
+import ioController from './controllers/io.controller.js';
 
 const app = express();
 
@@ -15,16 +14,15 @@ const io = new Server(server, {
     origin: '*'
   }
 });
-io.on('connection', require('./controllers/io.controller'));
+io.on('connection', ioController);
 
-app.use(log(process.env.ENVIRONMENT));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use(express.static('public'));
 
 app.use(indexrouter);
-app.use(notFoundHandler);
 app.use(errorHandler);
+app.use(notFoundHandler);
 
-module.exports = server;
+export default server;

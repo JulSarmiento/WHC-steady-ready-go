@@ -1,7 +1,7 @@
 import httpStatus from 'http-status';
 
 // Sequelize model for users table in PostgreSQL
-import { UserSchema } from '../models';
+import { UserSchema } from '../models/index.js  ';
 console.log("users", UserSchema);
 
 // /v1/users?offset=0&limit=10

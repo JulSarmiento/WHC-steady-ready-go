@@ -1,7 +1,6 @@
-<<<<<<< HEAD
 const httpStatus = require('http-status');
 const jwt = require('jsonwebtoken');
-const User = require('../models/users.schema');
+const User = require('../models/users.schema.js');
 
 exports.signIn = async (req, res) => {
   console.log("Auth -> signIn", req.body);
@@ -30,11 +29,6 @@ exports.signIn = async (req, res) => {
     res.send(e);
   }
 };
-=======
-import httpStatus from "http-status";
-import { User } from "../models/index.js";
-import jwt from "jsonwebtoken";
->>>>>>> c0f4616 (pasando de js to ss)
 
 export const login = async (req, res) => {
   console.log("Auth -> signIn", req.body);
