@@ -5,11 +5,15 @@ module.exports = (req, res, next) => {
   const { authorization } = req.headers;
   
   try {
-    if (!authorization || !authorization.startsWith("Bearer")) {
+    if (!authorization || !authorization.startsWith("Bearer ")  ) {
       throw "Token is invalid or is not present in request";
     }
     
     const token = authorization.split(" ")[1];
+
+    if (!token) {
+      throw "Token is invalid or is not present in request";
+    }
     
     const decodedToken = JWT.verify(token, process.env.JWT_SECRET_KEY);
     

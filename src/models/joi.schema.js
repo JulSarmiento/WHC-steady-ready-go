@@ -1,8 +1,8 @@
 
-const Joi = require("joi");
+import Joi from "joi";
 
 // Products schema validation
-exports.createProductSchema = Joi.object({
+export const createProductSchema = Joi.object({
   name: Joi.string().required(),
   price: Joi.number().integer().required(),
   category: Joi.string().required(),
@@ -10,7 +10,7 @@ exports.createProductSchema = Joi.object({
   cuantity: Joi.number().integer().required(),
 });
 
-exports.updateProductSchema = Joi.object({
+export const updateProductSchema = Joi.object({
   name: Joi.string().optional(),
   price: Joi.number().integer().optional(),
   category: Joi.string().optional(),
@@ -19,7 +19,7 @@ exports.updateProductSchema = Joi.object({
 });
 
 // "Users schema validation"
-exports.createUserSchema = Joi.object({
+export const createUserSchema = Joi.object({
   dni: Joi.number().integer().required(),
   name: Joi.string().required(),
   lastname: Joi.string().required(),
@@ -30,7 +30,7 @@ exports.createUserSchema = Joi.object({
   active: Joi.boolean().required(),
 });
 
-exports.updateUserSchema = Joi.object({
+export const updateUserSchema = Joi.object({
   dni: Joi.number().integer().optional(),
   name: Joi.string().optional(),
   lastname: Joi.string().optional(),

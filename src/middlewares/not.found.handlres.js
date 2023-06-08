@@ -1,4 +1,4 @@
-const httpStatus = require('http-status');
+import httpStatus from 'http-status';
 
 const notPageFound = (req, res, _next) => {
   res.status(httpStatus.NOT_FOUND).json({
@@ -7,4 +7,4 @@ const notPageFound = (req, res, _next) => {
   });
 }
 
-module.exports = notPageFound;
+export default notPageFound;

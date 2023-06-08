@@ -1,4 +1,4 @@
-const httpStatus = require('http-status');
+import httpStatus from "http-status";
 
 const errorMiddleware = (err, _req, res, _next) => {
   const { statusCode, message } = err;
@@ -11,4 +11,4 @@ const errorMiddleware = (err, _req, res, _next) => {
 
 };
 
-module.exports = errorMiddleware;
+export default errorMiddleware;

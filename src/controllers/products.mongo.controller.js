@@ -1,11 +1,11 @@
-const httpStatus = require("http-status");
+import httpStatus from "http-status";
 
 // Mongoose model for products collection in MongoDB
 const { ProductSchemas } = require("../models");
 console.log("product schema", ProductSchemas)
 
 // Get all products
-exports.getAll = async (_req, res, next) => {
+export const getAll = async (_req, res, next) => {
   try {
     const products = await ProductSchemas.find({})
     res.status(httpStatus.OK).json(products);
@@ -17,7 +17,7 @@ exports.getAll = async (_req, res, next) => {
 };
 
 // Get a product by id
-exports.getByid = async (req, res, next) => {
+export const getByid = async (req, res, next) => {
   try {
     const { id } = req.params;
     console.log( "id", id)
@@ -40,7 +40,7 @@ exports.getByid = async (req, res, next) => {
 };
 
 // Create a new product
-exports.createProduct = async (req, res, next) => {
+export const createProduct = async (req, res, next) => {
   try {
     const { name, price, category, description, cuantity } = req.body;
     const newProduct = {
@@ -63,7 +63,7 @@ exports.createProduct = async (req, res, next) => {
 };
 
 // // Update partial a product by id
-exports.updateProduct = async (req, res, next) => {
+export const updateProduct = async (req, res, next) => {
   try {
     const { id } = req.params;
     let product = await ProductSchemas.findById(id);
@@ -86,7 +86,7 @@ exports.updateProduct = async (req, res, next) => {
 };
 
 // Delete a product by id
-exports.deleteProduct = async (req, res) => {
+export const deleteProduct = async (req, res) => {
   try {
     const { id } = req.params;
     const product = await ProductSchemas.find(id);

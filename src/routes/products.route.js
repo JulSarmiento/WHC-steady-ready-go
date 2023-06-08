@@ -1,6 +1,6 @@
-const express = require("express");
-const productsController = require("../controllers/products.mongo.controller");
-const {validationHandlerProductCreate, validationHandlerProductUpdate} = require("../middlewares");
+import express from "express";
+import productsController from "../controllers/products.mongo.controller.js";
+import { validationHandlerProductCreate, validationHandlerProductUpdate } from "../middlewares/index.js";
 
 
 const router = express.Router();
@@ -15,5 +15,5 @@ router.patch("/:id", [validationHandlerProductUpdate], productsController.update
 
 router.delete("/:id", productsController.deleteProduct);
 
-module.exports = router;
+export default router;
 

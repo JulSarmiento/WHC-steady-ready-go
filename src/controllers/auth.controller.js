@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const httpStatus = require('http-status');
 const jwt = require('jsonwebtoken');
 const User = require('../models/users.schema');
@@ -29,20 +30,38 @@ exports.signIn = async (req, res) => {
     res.send(e);
   }
 };
+=======
+import httpStatus from "http-status";
+import { User } from "../models/index.js";
+import jwt from "jsonwebtoken";
+>>>>>>> c0f4616 (pasando de js to ss)
 
-exports.login = async (req, res) => {
-  const {email} = req.body;
+export const login = async (req, res) => {
+  console.log("Auth -> signIn", req.body);
 
-  token = jwt.sign({email}, process.env.JWT_SECRET, {expiresIn: '1h'});
-  return res.status(httpStatus.OK).json({
-    success: true,
-    token
-  });
+  try {
+    const { username, password } = req.body;
+    const user = await User.login(username, password);
+
+    if (!user) {
+      res.json({ error: "user / password combination does not exists" });
+      return;
+    }
+
+    const token = jwt.sign({ email: user.email }, process.env.JWT_SECRET_KEY, {
+      expiresIn: "1d",
+    });
+
+    res.json({ token, email: user.email, name: user.getFullName() });
+  } catch (e) {
+    console.error(e);
+    res.send(e);
+  }
 };
 
-exports.restrictedView = async (_req, res) => {
+export const restrictedView = async (_req, res) => {
   return res.status(httpStatus.OK).json({
     success: true,
-    message: 'confidential view!'
+    message: "confidential view!",
   });
 };

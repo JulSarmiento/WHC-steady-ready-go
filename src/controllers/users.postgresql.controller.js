@@ -1,12 +1,12 @@
-const httpStatus = require('http-status');
+import httpStatus from 'http-status';
 
 // Sequelize model for users table in PostgreSQL
-const { UserSchema } = require('../models');
+import { UserSchema } from '../models';
 console.log("users", UserSchema);
 
 // /v1/users?offset=0&limit=10
 // get all users
-exports.getAll = async (req, res, next) => {
+export const getAll = async (req, res, next) => {
   const {offset = 0, limit = 10} = req.query;
   try {
     const users = await UserSchema.findAll({
@@ -25,7 +25,7 @@ exports.getAll = async (req, res, next) => {
 };
 
 // get user by id
-exports.getByid = async (req, res, next) => {
+export const getByid = async (req, res, next) => {
   const {id} = req.params;
   try {
     const user = await UserSchema.findByPk(id);
@@ -47,8 +47,8 @@ exports.getByid = async (req, res, next) => {
 };
 
 // create user
-exports.createUser = async (req, res, next) => {
-  const {dni, name, lastname, email, password, genre, phone, active}= req.body;
+export const createUser = async (req, res, next) => {
+  const {dni, name, lastname, email, password, genre, phone, active} = req.body;
    const newUser = {
     dni,
     name,
@@ -73,7 +73,7 @@ exports.createUser = async (req, res, next) => {
 };
 
 // update user
-exports.updateUser = async (req, res, next) => {
+export const updateUser = async (req, res, next) => {
   const {id} = req.params;
   const user = await UserSchema.findByPk(id);
   if (!user) {
@@ -100,7 +100,7 @@ exports.updateUser = async (req, res, next) => {
 };
 
 // delete user
-exports.deleteUser = async (req, res, next) => {
+export const deleteUser = async (req, res, next) => {
   const {id} = req.params;
   try {
     const userToDelete = await UserSchema.findByPk(id);

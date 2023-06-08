@@ -9,7 +9,7 @@ router.get("/", usersController.getAll);
 
 router.get("/:id", usersController.getByid);
 
-router.post("/", [validationHandlerUserCreate] ,usersController.createUser);
+router.post("/", [validationHandlerUserCreate], usersController.createUser);
 
 router.patch("/:id", [validationHandlerUserUpdate], usersController.updateUser);
 

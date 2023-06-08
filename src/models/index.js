@@ -1,2 +1,2 @@
-exports.ProductSchemas = require('./product.schema');
-exports.UserSchema = require('./users.schema');
+export const ProductSchemas = require('./product.schema');
+export const UserSchema = require('./users.schema');

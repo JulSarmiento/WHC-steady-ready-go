@@ -1,7 +1,7 @@
-const httpStatus = require('http-status');
-const jwt = require('jsonwebtoken');
+import httpStatus from "http-status";
+import jwt from "jsonwebtoken";
 
-exports.isAuth = async (req, res, _next) => {
+const isAuth = async (req, res, next) => {
   const auth = req.headers.authorization;
   let decodedToken;
   try {
@@ -18,4 +18,7 @@ exports.isAuth = async (req, res, _next) => {
       message: 'Unauthorized!'
     });
   };
+  next()
 };
+
+export default isAuth;

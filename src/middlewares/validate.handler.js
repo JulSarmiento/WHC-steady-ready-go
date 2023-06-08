@@ -1,4 +1,4 @@
-const httpStatus = require("http-status");
+import httpStatus from "http-status";
 
 const validateModel = (schema) => (req, res, next) => {
   console.log("schema", schema);
@@ -13,4 +13,4 @@ const validateModel = (schema) => (req, res, next) => {
   next();
 };
 
-module.exports = validateModel;
+export default validateModel;
