@@ -3,15 +3,14 @@ import {
   updateProductSchema,
   createUserSchema,
   updateUserSchema,
-} from "../models/joi.schema.js";
-
+} from "../models/joi.schema";
 
 // "Error handlers"
-const errorHandler = require('./error.handlres.js');
-const notFoundHandler = require('./not.found.handlres.js');
+import errorHandler from "./error.handlres";
+import notFoundHandler from "./not.found.handlres";
 
-// "Validation handler with joi"
-const validationHandler = require('./validate.handler.js');
+// "Validation handler"
+import validationHandler from "./validate.handler";
 
 // "Products validation handler with joi"
 const validationHandlerProductCreate =  validationHandler(createProductSchema);

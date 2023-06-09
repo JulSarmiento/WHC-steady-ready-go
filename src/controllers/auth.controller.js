@@ -1,6 +1,6 @@
 const httpStatus = require('http-status');
-const jwt = require('jsonwebtoken');
-const User = require('../models/users.schema.js');
+const JWT = require('jsonwebtoken');
+const User = require('../models/users.schema');
 
 exports.signIn = async (req, res) => {
   console.log("Auth -> signIn", req.body);
@@ -42,7 +42,7 @@ export const login = async (req, res) => {
       return;
     }
 
-    const token = jwt.sign({ email: user.email }, process.env.JWT_SECRET_KEY, {
+    const token = JWT.sign({ email: user.email }, process.env.JWT_SECRET_KEY, {
       expiresIn: "1d",
     });
 

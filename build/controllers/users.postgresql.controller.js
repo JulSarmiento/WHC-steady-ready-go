@@ -15,14 +15,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteUser = exports.updateUser = exports.createUser = exports.getByid = exports.getAll = void 0;
 const http_status_1 = __importDefault(require("http-status"));
 // Sequelize model for users table in PostgreSQL
-const index_js__1 = require("../models/index.js  ");
-console.log("users", index_js__1.UserSchema);
+const index_1 = require("../models/index");
+console.log("users", index_1.UserSchema);
 // /v1/users?offset=0&limit=10
 // get all users
 const getAll = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const { offset = 0, limit = 10 } = req.query;
     try {
-        const users = yield index_js__1.UserSchema.findAll({
+        const users = yield index_1.UserSchema.findAll({
             offset,
             limit
         });
@@ -41,7 +41,7 @@ exports.getAll = getAll;
 const getByid = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     try {
-        const user = yield index_js__1.UserSchema.findByPk(id);
+        const user = yield index_1.UserSchema.findByPk(id);
         if (!user) {
             return res.status(http_status_1.default.BAD_REQUEST).json({
                 success: false,
@@ -74,7 +74,7 @@ const createUser = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
         active,
     };
     try {
-        const user = yield index_js__1.UserSchema.create(newUser);
+        const user = yield index_1.UserSchema.create(newUser);
         res.status(http_status_1.default.CREATED).json({
             success: true,
             data: user
@@ -89,7 +89,7 @@ exports.createUser = createUser;
 // update user
 const updateUser = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
-    const user = yield index_js__1.UserSchema.findByPk(id);
+    const user = yield index_1.UserSchema.findByPk(id);
     if (!user) {
         return res.status(http_status_1.default.BAD_REQUEST).json({
             success: false,
@@ -98,14 +98,14 @@ const updateUser = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
     }
     ;
     try {
-        yield index_js__1.UserSchema.update(req.body, {
+        yield index_1.UserSchema.update(req.body, {
             where: {
                 id
             }
         });
         res.status(http_status_1.default.OK).json({
             success: true,
-            data: yield index_js__1.UserSchema.findByPk(id)
+            data: yield index_1.UserSchema.findByPk(id)
         });
     }
     catch (error) {
@@ -118,7 +118,7 @@ exports.updateUser = updateUser;
 const deleteUser = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     try {
-        const userToDelete = yield index_js__1.UserSchema.findByPk(id);
+        const userToDelete = yield index_1.UserSchema.findByPk(id);
         if (!userToDelete) {
             return res.status(http_status_1.default.BAD_REQUEST).json({
                 success: false,
@@ -126,7 +126,7 @@ const deleteUser = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
             });
         }
         ;
-        yield index_js__1.UserSchema.destroy({
+        yield index_1.UserSchema.destroy({
             where: {
                 id
             }

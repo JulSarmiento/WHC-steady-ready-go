@@ -1,7 +1,7 @@
 import httpStatus from "http-status";
 
 // Mongoose model for products collection in MongoDB
-const { ProductSchemas } = require("../models/index.js");
+const { ProductSchemas } = require("../models/index");
 console.log("product schema", ProductSchemas)
 
 // Get all products

@@ -1,6 +1,6 @@
 import express from "express";
-import { login, restrictedView } from "../controllers/auth.controller.js";
-import { isAuth } from "../middlewares/isAuth.handler.js";
+import { login, restrictedView } from "../controllers/auth.controller";
+import { isAuth } from "../middlewares/isAuth.handler";
 
 const router = express.Router();
 

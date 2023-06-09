@@ -1,19 +1,25 @@
 import express from "express";
-import productsController from "../controllers/products.mongo.controller.js";
-import { validationHandlerProductCreate, validationHandlerProductUpdate } from "../middlewares/index.js";
+import {
+  getAll,
+  getByid,
+  createProduct,
+  updateProduct,
+  deleteProduct,
+} from "../controllers/products.mongo.controller";
+import { validationHandlerProductCreate, validationHandlerProductUpdate } from "../middlewares/index";
 
 
 const router = express.Router();
 
-router.get("/", productsController.getAll);
+router.get("/", getAll);
 
-router.get("/:id", productsController.getByid);
+router.get("/:id", getByid);
 
-router.post("/", [validationHandlerProductCreate], productsController.createProduct);
+router.post("/", [validationHandlerProductCreate], createProduct);
 
-router.patch("/:id", [validationHandlerProductUpdate], productsController.updateProduct);
+router.patch("/:id", [validationHandlerProductUpdate], updateProduct);
 
-router.delete("/:id", productsController.deleteProduct);
+router.delete("/:id", deleteProduct);
 
 export default router;
 

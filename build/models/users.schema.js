@@ -1,91 +1,85 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const { Model, DataTypes } = require('sequelize');
-const { encryptPassword } = require('../utils/auth.js');
-const sequelize = require('../utils/postgresql.config,js');
-/**
- * @property {string} email - User uniques email
- * @property {string} firstName - User first name
- * @property {string} lastName -  User last name
- * @property {string} password - User sensitive password - only received on creation or at login
- */
-class User extends Model {
-    /**
-     * @promise
-     *
-     * @param {string} email - User email
-     * @param {string} password - Password to validate
-     * @returns {Promise<User>} - User if exists, null otherwise
-     */
+const sequelize_1 = require("sequelize");
+const auth_1 = require("../utils/auth");
+const postgresql_config_1 = __importDefault(require("../utils/postgresql.config"));
+class User extends sequelize_1.Model {
     static login(email, password) {
         return User.findOne({
-            where: { email, password: encryptPassword(password) },
+            where: { email, password: (0, auth_1.encryptPassword)(password) },
         });
     }
-    getFullName() {
-        return `${this.firstName} ${this.lastName}`;
-    }
 }
+// User.addHook('beforeSave', async (user: User) => {
+//   if (user.changed('password')) {
+//     const encryptedPassword = encryptPassword(user.password);
+//     user.setDataValue('password', encryptedPassword);
+//   }
+// });
 User.init({
     id: {
-        type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV4,
+        type: sequelize_1.DataTypes.UUID,
+        defaultValue: sequelize_1.DataTypes.UUIDV4,
         primaryKey: true,
-        unique: true
+        unique: true,
     },
     dni: {
-        type: DataTypes.INTEGER,
+        type: sequelize_1.DataTypes.INTEGER,
         allowNull: false,
         unique: true,
         validate: {
             len: [7, 8],
-        }
+        },
     },
     name: {
-        type: DataTypes.CHAR(10),
-        allowNull: false
+        type: sequelize_1.DataTypes.CHAR(10),
+        allowNull: false,
     },
     lastname: {
-        type: DataTypes.STRING,
-        allowNull: false
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: false,
     },
     email: {
-        type: DataTypes.STRING,
+        type: sequelize_1.DataTypes.STRING,
         allowNull: false,
         unique: true,
         validate: {
             isEmail: true,
             isLowercase: true,
-        }
+        },
     },
     password: {
-        type: DataTypes.STRING,
+        type: sequelize_1.DataTypes.STRING,
         allowNull: false,
         validate: {
             len: [10, 16],
-            set(password) {
-                this.setDataValue('password', encryptPassword(password));
-            }
-        }
+        },
+        set(value) {
+            const encryptedPassword = (0, auth_1.encryptPassword)(value);
+            this.setDataValue('password', encryptedPassword);
+        },
     },
     genre: {
-        type: DataTypes.STRING,
-        allowNull: false
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: false,
     },
     phone: {
-        type: DataTypes.STRING,
+        type: sequelize_1.DataTypes.STRING,
         allowNull: false,
         validate: {
             len: [9, 11],
-        }
+        },
     },
     active: {
-        type: DataTypes.BOOLEAN,
+        type: sequelize_1.DataTypes.BOOLEAN,
         allowNull: false,
-        defaultValue: true
-    }
+        defaultValue: true,
+    },
 }, {
-    sequelize,
+    sequelize: postgresql_config_1.default,
     modelName: 'User',
     tableName: 'users',
 });

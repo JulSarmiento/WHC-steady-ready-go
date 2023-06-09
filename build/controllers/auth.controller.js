@@ -11,8 +11,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.restrictedView = exports.login = void 0;
 const httpStatus = require('http-status');
-const jwt = require('jsonwebtoken');
-const User = require('../models/users.schema.js');
+const JWT = require('jsonwebtoken');
+const User = require('../models/users.schema');
 exports.signIn = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     console.log("Auth -> signIn", req.body);
     try {
@@ -42,7 +42,7 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             res.json({ error: "user / password combination does not exists" });
             return;
         }
-        const token = jwt.sign({ email: user.email }, process.env.JWT_SECRET_KEY, {
+        const token = JWT.sign({ email: user.email }, process.env.JWT_SECRET_KEY, {
             expiresIn: "1d",
         });
         res.json({ token, email: user.email, name: user.getFullName() });

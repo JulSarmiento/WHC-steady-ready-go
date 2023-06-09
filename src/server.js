@@ -1,7 +1,7 @@
 import 'dotenv/config';
-import { authenticate, sync } from './src/utils/postgresql.config.js';
+import { authenticate, sync } from './utils/postgresql.config.js';
 import { connect } from 'mongoose';
-import { listen } from './src/app.js';
+import { listen } from './app.js';
 
 const PORT = process.env.PORT || 3001;
 

@@ -1,6 +1,15 @@
 import express from "express";
-import { getAll, getByid, createUser, updateUser, deleteUser} from "../controllers/users.postgresql.controller.js";
-import { validationHandlerUserCreate, validationHandlerUserUpdate } from "../middlewares/index.js";
+import {
+  getAll,
+  getByid,
+  createUser,
+  updateUser,
+  deleteUser,
+} from "../controllers/users.postgresql.controller";
+import {
+  validationHandlerUserCreate,
+  validationHandlerUserUpdate,
+} from "../middlewares/index";
 
 const router = express.Router();
 
@@ -15,4 +24,3 @@ router.patch("/:id", [validationHandlerUserUpdate], updateUser);
 router.delete("/:id", deleteUser);
 
 export default router;
-

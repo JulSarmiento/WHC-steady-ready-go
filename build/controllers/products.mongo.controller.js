@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteProduct = exports.updateProduct = exports.createProduct = exports.getByid = exports.getAll = void 0;
 const http_status_1 = __importDefault(require("http-status"));
 // Mongoose model for products collection in MongoDB
-const { ProductSchemas } = require("../models/index.js");
+const { ProductSchemas } = require("../models/index");
 console.log("product schema", ProductSchemas);
 // Get all products
 const getAll = (_req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
