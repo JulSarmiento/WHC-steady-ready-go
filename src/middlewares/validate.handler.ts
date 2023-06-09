@@ -1,6 +1,8 @@
+import { NextFunction, Request, Response } from "express";
 import httpStatus from "http-status";
+import Joi from "joi";
 
-const validateModel = (schema) => (req, res, next) => {
+const validateModel = (schema: Joi.Schema) => (req: Request, res: Response, next: NextFunction) => {
   console.log("schema", schema);
   const { error } = schema.validate(req.body);
 

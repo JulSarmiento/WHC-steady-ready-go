@@ -3,6 +3,17 @@ import { encryptPassword } from '../utils/auth';
 import sequelize from '../utils/postgresql.config';
 
 class User extends Model {
+  declare id: string;
+  declare dni: number;
+  declare name: string;
+  declare lastname: string;
+  declare email: string;
+  declare password: string;
+  declare genre: string;
+  declare phone: string;
+  declare active: boolean;
+  declare getFullName: () => string;
+
   static login(email: string, password: string): Promise<User | null> {
     return User.findOne({
       where: { email, password: encryptPassword(password) },

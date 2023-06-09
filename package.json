@@ -2,15 +2,13 @@
   "name": "ready-steady-go-proyecto",
   "version": "1.0.0",
   "description": "Proyecto culminante de la primera etapa del curso From Hero to Superhero.",
-  "main": "server.js",
+  "main": "build/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "start:dev": "node --watch server.js",
-    "nodemon": "nodemon server.js",
+    "start": "ts-node src/server.ts",
+    "dev": "nodemon",
     "build": "rimraf ./build && tsc",
-    "start:ts": "npm run build && node -r dotenv/config build/app.js",
-    "dev": "npx nodemon -r dotenv/config"
+    "start:ts": "npm run build && node -r dotenv/config build/app.js"
   },
   "keywords": [],
   "author": "",

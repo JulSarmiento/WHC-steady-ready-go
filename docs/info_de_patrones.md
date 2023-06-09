@@ -174,14 +174,14 @@ class AuthProvider {
     this.strategy = strategy;
   }
 
-  authenticate(req, res, next) {
-    this.strategy.authenticate(req, res, next);
+  authenticate(req: Request, res: Response, next: NextFunction) {
+    this.strategy.authenticate(req: Request, res: Response, next: NextFunction);
   }
 }
 
 // Implementación de la estrategia para Google
 class GoogleAuthStrategy {
-  authenticate(req, res, next) {
+  authenticate(req: Request, res: Response, next: NextFunction) {
     // Lógica de autenticación de Google
     // ...
 
@@ -191,7 +191,7 @@ class GoogleAuthStrategy {
 
 // Implementación de la estrategia para Facebook
 class FacebookAuthStrategy {
-  authenticate(req, res, next) {
+  authenticate(req: Request, res: Response, next: NextFunction) {
     // Lógica de autenticación de Facebook
     // ...
 
@@ -201,7 +201,7 @@ class FacebookAuthStrategy {
 
 // Implementación de la estrategia para Twitter
 class TwitterAuthStrategy {
-  authenticate(req, res, next) {
+  authenticate(req: Request, res: Response, next: NextFunction) {
     // Lógica de autenticación de Twitter
     // ...
 
@@ -287,7 +287,7 @@ function isOfType(req, type) {
 }
 
 // Define un middleware que maneja peticiones GET
-function handleGet(req, res, next) {
+function handleGet(req: Request, res: Response, next: NextFunction) {
   if (isOfType(req, 'GET')) {
     console.log('Manejando una petición GET');
     res.send('Petición GET manejada');
@@ -297,7 +297,7 @@ function handleGet(req, res, next) {
 }
 
 // Define un middleware que maneja peticiones POST
-function handlePost(req, res, next) {
+function handlePost(req: Request, res: Response, next: NextFunction) {
   if (isOfType(req, 'POST')) {
     console.log('Manejando una petición POST');
     res.send('Petición POST manejada');
@@ -307,7 +307,7 @@ function handlePost(req, res, next) {
 }
 
 // Define un middleware que maneja peticiones PUT
-function handlePut(req, res, next) {
+function handlePut(req: Request, res: Response, next: NextFunction) {
   if (isOfType(req, 'PUT')) {
     console.log('Manejando una petición PUT');
     res.send('Petición PUT manejada');
@@ -317,7 +317,7 @@ function handlePut(req, res, next) {
 }
 
 // Define un middleware que maneja peticiones DELETE
-function handleDelete(req, res, next) {
+function handleDelete(req: Request, res: Response, next: NextFunction) {
   if (isOfType(req, 'DELETE')) {
     console.log('Manejando una petición DELETE');
     res.send('Petición DELETE manejada');

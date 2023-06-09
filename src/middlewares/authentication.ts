@@ -1,7 +1,7 @@
 const JWT = require("jsonwebtoken");
 const httpStatus = require("http-status");
 
-module.exports = (req, res, next) => {
+module.exports = (req: Request, res: Response, next: NextFunction) => {
   const { authorization } = req.headers;
   
   try {

@@ -1,7 +1,7 @@
 import 'dotenv/config';
-import { authenticate, sync } from './utils/postgresql.config.js';
-import { connect } from 'mongoose';
-import { listen } from './app.js';
+import sequelize from './utils/postgresql.config';
+import { ConnectOptions, connect } from 'mongoose';
+import listen from './app';
 
 const PORT = process.env.PORT || 3001;
 
@@ -13,14 +13,13 @@ const start = async () => {
     await connect(CONNECTION_URL, {
       useNewUrlParser: true,
       useUnifiedTopology: true
-    });
+    } as ConnectOptions);
     console.log('Database connected to MongoDB Atlas');
 
-    await authenticate();
-    await sync();
+    await sequelize.sync();
     console.log('Database connected to PostgreSQL');
 
-    listen(PORT, () => {
+    listen.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
     });
   } catch (err) {

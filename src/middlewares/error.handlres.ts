@@ -1,6 +1,11 @@
+import { NextFunction, Request, Response } from "express";
 import httpStatus from "http-status";
 
-const errorMiddleware = (err, _req, res, _next) => {
+interface iError extends Error {
+  statusCode?: number;
+}
+
+const errorMiddleware = (err: iError, _req: Request, res: Response, _next: NextFunction) => {
   const { statusCode, message } = err;
 
   res.status(httpStatus.INTERNAL_SERVER_ERROR).json({

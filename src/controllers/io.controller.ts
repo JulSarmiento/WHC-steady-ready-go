@@ -1,9 +1,11 @@
-export default (socket) => {
+import { Socket } from "socket.io";
+
+export default (socket: Socket) => {
 
   console.log('Cliente conectado');
 
 // Escucha el evento 'mensaje' enviado por el cliente
-  socket.on('message', (data) => {
+  socket.on('message', (data: object) => {
     console.log(data);
     socket.emit('chat', data);
   });
