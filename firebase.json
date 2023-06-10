@@ -1,0 +1,10 @@
+{
+  "functions": {
+    "source": "",
+    "codebase": "default",
+    "ignore": [
+      "*.md",
+      "node_modules"
+    ]
+  }
+}
