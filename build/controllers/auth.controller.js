@@ -12,11 +12,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.restrictedView = void 0;
+exports.restrictedView = exports.signIn = void 0;
 const models_1 = require("../models");
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const http_status_1 = __importDefault(require("http-status"));
-exports.signIn = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const signIn = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     console.log("Auth -> signIn", req.body);
     try {
         const { username, password } = req.body;
@@ -36,6 +36,7 @@ exports.signIn = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         res.send(e);
     }
 });
+exports.signIn = signIn;
 const restrictedView = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     return res.status(http_status_1.default.OK).json({
         success: true,

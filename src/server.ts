@@ -1,4 +1,20 @@
 import 'dotenv/config';
+
+declare global {
+  namespace NodeJS {
+    interface ProcessEnv {
+      JWT_SECRET_KEY: string;
+      MONGO_USERNAME: string;
+      MONGO_PASSWORD: string;
+      POSTGRES_USERNAME: string;
+      POSTGRES_PASSWORD: string;
+      POSTGRES_DATABASE: string;
+      POSTGRES_HOST: string;
+      POSTGRES_PORT: string;
+    }
+  }
+}
+
 import sequelize from './utils/postgresql.config';
 import { ConnectOptions, connect } from 'mongoose';
 import listen from './app';

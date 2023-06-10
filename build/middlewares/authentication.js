@@ -1,7 +1,11 @@
 "use strict";
-const JWT = require("jsonwebtoken");
-const httpStatus = require("http-status");
-module.exports = (req, res, next) => {
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const http_status_1 = __importDefault(require("http-status"));
+const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+exports.default = (req, res, next) => {
     const { authorization } = req.headers;
     try {
         if (!authorization || !authorization.startsWith("Bearer ")) {
@@ -11,7 +15,7 @@ module.exports = (req, res, next) => {
         if (!token) {
             throw "Token is invalid or is not present in request";
         }
-        const decodedToken = JWT.verify(token, process.env.JWT_SECRET_KEY);
+        const decodedToken = jsonwebtoken_1.default.verify(token, process.env.JWT_SECRET_KEY);
         if (!decodedToken) {
             throw "Invalid Token";
         }
@@ -20,7 +24,7 @@ module.exports = (req, res, next) => {
     }
     catch (err) {
         console.log(err);
-        res.status(httpStatus.FORBIDDEN).send(err.message || "Access forbidden");
+        res.status(http_status_1.default.FORBIDDEN).send(err.message || "Access forbidden");
     }
     ;
 };

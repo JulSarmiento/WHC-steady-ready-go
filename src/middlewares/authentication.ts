@@ -1,8 +1,14 @@
-const JWT = require("jsonwebtoken");
-const httpStatus = require("http-status");
+import httpStatus from "http-status";
+import JWT from "jsonwebtoken";
+import { Request, Response, NextFunction } from "express";
 
-module.exports = (req: Request, res: Response, next: NextFunction) => {
+interface AuthenticatedRequest extends Request {
+  user?: object; // Aquí puedes especificar el tipo de `user` según tu estructura de datos
+}
+
+export default (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
   const { authorization } = req.headers;
+
   
   try {
     if (!authorization || !authorization.startsWith("Bearer ")  ) {
@@ -15,17 +21,17 @@ module.exports = (req: Request, res: Response, next: NextFunction) => {
       throw "Token is invalid or is not present in request";
     }
     
-    const decodedToken = JWT.verify(token, process.env.JWT_SECRET_KEY);
+    const decodedToken = JWT.verify(token, process.env.JWT_SECRET_KEY as string);
     
     if (!decodedToken) {
       throw "Invalid Token";
     }
 
-    req.user = decodedToken;
+    req.user  = decodedToken as object;
     
     next();
 
-  } catch(err) {    
+  } catch(err: any) {    
     console.log(err);
     res.status(httpStatus.FORBIDDEN).send(err.message || "Access forbidden");
   };

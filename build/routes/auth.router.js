@@ -7,6 +7,6 @@ const express_1 = __importDefault(require("express"));
 const auth_controller_1 = require("../controllers/auth.controller");
 const isAuth_handler_1 = __importDefault(require("../middlewares/isAuth.handler"));
 const router = express_1.default.Router();
-router.post("/login", auth_controller_1.login);
+router.post("/login", auth_controller_1.signIn);
 router.get("/restricted", isAuth_handler_1.default, auth_controller_1.restrictedView);
 exports.default = router;

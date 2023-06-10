@@ -3,7 +3,7 @@ import { UserSchema } from "../models";
 import JWT from "jsonwebtoken";
 import httpStatus from "http-status";
 
-exports.signIn = async (req: Request, res: Response) => {
+export const signIn = async (req: Request, res: Response) => {
   console.log("Auth -> signIn", req.body);
   
   try {
