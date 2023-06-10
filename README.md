@@ -1,3 +1,4 @@
+[![Mi primer Workflow](https://github.com/JulSarmiento/WHC-steady-ready-go/actions/workflows/main.yml/badge.svg)](https://github.com/JulSarmiento/WHC-steady-ready-go/actions/workflows/main.yml)
 # APIRestFull Mazuzoe Store
 
 This is the README for the API REST project with Express and FS as information persistence.
