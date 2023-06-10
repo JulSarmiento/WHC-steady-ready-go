@@ -1,0 +1,21 @@
+name: "Mi primer Workflow"
+
+on: 
+  workflow_dispatch:
+  
+  push: 
+    branches:
+      - main
+      - master
+      - develop
+      
+jobs:
+  compile: 
+    runs-ons: ubuntu-latest
+    steps:
+      - nam: Checkout
+        uses: actions/checkout@3.5.3
+      
+      -name: Compile
+       uses: npx tsc 
+  
