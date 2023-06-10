@@ -24,7 +24,14 @@ jobs:
       - name: Install
         run: |
           npm ci --silent
-          exit 1
+          npx run build
+        working-directory: .
+      
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: build
+          path: build
       
 
   
