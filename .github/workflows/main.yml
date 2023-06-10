@@ -24,7 +24,7 @@ jobs:
       - name: Install and Build
         run: |
           npm ci
-          npx run build
+          npm run build
         working-directory: .
       
       - name: Upload a Build Artifact
