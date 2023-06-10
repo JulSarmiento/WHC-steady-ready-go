@@ -23,4 +23,6 @@ const isAuth = async (req: Request, res: Response, next: NextFunction) => {
   next()
 };
 
+
+// asnotacion 
 export default isAuth;

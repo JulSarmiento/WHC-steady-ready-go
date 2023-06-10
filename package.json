@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node src/server.ts",
     "dev": "nodemon",
-    "build": "rimraf ./build && tsc",
+    "build": "tsc",
+    "build:build": "rimraf ./build && tsc",
     "start:ts": "npm run build && node -r dotenv/config build/app.js"
   },
   "keywords": [],
